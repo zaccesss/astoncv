@@ -183,10 +183,17 @@ $stmt->execute([$id]);
                 </div>
             <?php endif; ?>
 
-            <!-- Back button -->
-            <a href="index.php" class="cta-button" style="margin-top: 2rem;">
-                &larr; Back to All CVs
-            </a>
+            <!-- Back button and Download PDF button -->
+            <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                <a href="index.php" class="cta-button">
+                    &larr; Back to All CVs
+                </a>
+                <a href="export_cv.php?id=<?php echo $cv['id']; ?>" 
+                   class="cta-button" 
+                   style="background: #28a745;">
+                    &#8595; Download CV as PDF
+                </a>
+            </div>
 
         </div>
     </div>
