@@ -1,0 +1,5 @@
+# My database credentials - must never be committed to GitHub
+config.php
+
+# Uploaded profile pictures - personal files, too large for GitHub
+uploads/
