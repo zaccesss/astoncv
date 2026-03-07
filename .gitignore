@@ -3,3 +3,7 @@ config.php
 
 # Uploaded profile pictures - personal files, too large for GitHub
 uploads/
+
+# mPDF library - too large for GitHub, install via composer
+vendor/
+
