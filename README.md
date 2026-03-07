@@ -51,7 +51,7 @@
 
 AstonCV is a full-stack CV database website built for **DG1IAD Portfolio 3** at Aston University. It allows users to browse and search student CVs publicly, register an account, and manage their own CV once logged in.
 
-The project is built with plain PHP 8.2 and MySQL — no frameworks — and is deployed on the Aston University internal hosting server.
+The project is built with plain PHP 8.2 and MySQL - no frameworks - and is deployed on the Aston University internal hosting server.
 
 ---
 
@@ -126,7 +126,7 @@ The project is built with plain PHP 8.2 and MySQL — no frameworks — and is d
 4. Start Apache and MySQL in XAMPP
 5. Visit `http://localhost/astoncv`
 
-> `config.php` is gitignored — your real credentials are never stored in this repo.
+> `config.php` is gitignored - your real credentials are never stored in this repo.
 
 ---
 
