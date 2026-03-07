@@ -135,8 +135,8 @@ The project is built with plain PHP 8.2 and MySQL — no frameworks — and is d
 
 **Isaac Adjei**  
 Student ID: 240191278  
-BEng Electronic Engineering and Computer Science, Year 1  
-Aston University — DG1IAD Portfolio 3
+BEng Electronic Engineering and Computer Science  
+Aston University - DG1IAD Portfolio 3
 
 ---
 
