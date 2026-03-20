@@ -4,194 +4,200 @@
  * CV PDF Export - AstonCV
  * Student: Isaac Adjei (240191278)
  *
- * Generates a downloadable PDF of a single CV using mPDF.
- * The CV is identified by the id passed in the URL e.g. export_cv.php?id=1
+ * I generate a downloadable PDF of a single CV using mPDF.
+ * I identify the CV by the id passed in the URL e.g. export_cv.php?id=1
  * Anyone can export any CV as a PDF - no login required.
+ * I wrap database calls in try/catch for proper error handling.
  */
 
-// Load the database connection
 require 'db.php';
-
-// Load mPDF - this loads the library Composer installed
 require 'vendor/autoload.php';
-
-// Start session so we can access session data if needed
 session_start();
 
-// Check that an id was provided in the URL
+// I check that an id was provided and is a valid number
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
 }
 
-$id = (int)$_GET['id'];
+$id = (int) $_GET['id'];
 
-// Fetch the CV from the database using a prepared statement
-// This prevents SQL injection
-$stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
-$stmt->execute([$id]);
-$cv = $stmt->fetch();
+try {
+    // I fetch the CV using a prepared statement to prevent SQL injection
+    $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
+    $stmt->execute([$id]);
+    $cv = $stmt->fetch();
+} catch (PDOException $e) {
+    header('Location: index.php');
+    exit;
+}
 
-// If no CV found with that ID, go back to homepage
+// I redirect home if no CV was found with this ID
 if (!$cv) {
     header('Location: index.php');
     exit;
 }
 
-// ================================================
-// BUILD THE HTML CONTENT FOR THE PDF
-// ================================================
-// mPDF converts HTML into a PDF, so we write the
-// CV layout as HTML and mPDF handles the rest.
-
-// Helper function - safely escapes text for HTML output
+// I use this helper to safely escape text for HTML output
 // This prevents XSS even inside the PDF
 function e($text) {
     return htmlspecialchars($text ?? '', ENT_QUOTES, 'UTF-8');
 }
 
-// Build skills as comma-separated text for the PDF
+// I build the skills as pipe-separated text for the PDF
 $skillsText = '';
 if (!empty($cv['skills'])) {
-    $skillsArray = array_map('trim', explode(',', $cv['skills']));
-    $skillsText = implode(' | ', array_filter($skillsArray));
+    $skillsArray = array_filter(array_map('trim', explode(',', $cv['skills'])));
+    $skillsText  = implode(' | ', $skillsArray);
 }
 
-// Build the HTML that mPDF will convert into a PDF
+// I get the first letter of the name for the avatar area
+$initial = strtoupper(mb_substr(trim($cv['name']), 0, 1));
+
+// ================================================
+// I build the HTML that mPDF will convert to a PDF
+// ================================================
 $html = '
 <html>
 <head>
 <style>
     body {
         font-family: Arial, sans-serif;
-        font-size: 12px;
-        color: #222222;
+        font-size: 11.5px;
+        color: #1a1025;
         margin: 0;
         padding: 0;
     }
 
-    /* Top header bar with name */
+    /* I use Aston University purple for the header - matches the website */
     .header {
-        background-color: #003B6F;
+        background-color: #5c2d82;
         color: white;
-        padding: 20px 25px;
-        margin-bottom: 20px;
+        padding: 22px 25px;
+        margin-bottom: 0;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
     }
 
     .header h1 {
-        margin: 0 0 5px 0;
-        font-size: 24px;
+        margin: 0 0 4px 0;
+        font-size: 22px;
         font-weight: bold;
+        color: white;
     }
 
-    .header p {
-        margin: 0;
-        font-size: 13px;
-        color: #cce0ff;
-    }
-
-    /* Section headings */
-    h2 {
-        font-size: 13px;
-        font-weight: bold;
-        color: #003B6F;
-        border-bottom: 2px solid #003B6F;
-        padding-bottom: 4px;
-        margin-top: 18px;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* General paragraph text */
-    p {
-        margin: 4px 0;
-        line-height: 1.6;
-    }
-
-    /* Info row e.g. Email: xxx */
-    .info-row {
-        margin-bottom: 5px;
-    }
-
-    .info-row strong {
-        color: #003B6F;
-    }
-
-    /* Skills displayed inline */
-    .skills {
+    .header .role {
+        margin: 0 0 2px 0;
         font-size: 12px;
-        line-height: 1.8;
-        color: #333;
+        color: rgba(255,255,255,0.85);
+        font-weight: bold;
     }
 
-    /* Footer at the bottom of the PDF */
+    .header .email {
+        margin: 0;
+        font-size: 11px;
+        color: rgba(255,255,255,0.7);
+    }
+
+    /* I add a thin accent bar below the header */
+    .header-bar {
+        background-color: #3a1a5c;
+        height: 4px;
+        margin-bottom: 20px;
+    }
+
+    /* I style section headings to match the website CV detail page */
+    h2 {
+        font-size: 8px;
+        font-weight: bold;
+        color: #5c2d82;
+        border-bottom: 1px solid #e2d9f3;
+        padding-bottom: 3px;
+        margin-top: 16px;
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    p {
+        margin: 3px 0;
+        line-height: 1.65;
+        color: #3d2a55;
+    }
+
+    .skills {
+        font-size: 11px;
+        line-height: 1.8;
+        color: #3d2a55;
+    }
+
+    /* I style the footer line at the bottom of the PDF */
     .footer {
-        margin-top: 30px;
-        border-top: 1px solid #cccccc;
-        padding-top: 8px;
-        font-size: 10px;
-        color: #888888;
+        margin-top: 28px;
+        border-top: 1px solid #e2d9f3;
+        padding-top: 7px;
+        font-size: 9px;
+        color: #7c6f9a;
         text-align: center;
     }
 
-    /* Content padding */
     .content {
         padding: 0 25px 25px 25px;
+    }
+
+    a {
+        color: #5c2d82;
     }
 </style>
 </head>
 <body>
 
-<!-- Header with name and key language -->
+<!-- I use Aston purple for the header to match the website -->
 <div class="header">
     <h1>' . e($cv['name']) . '</h1>
-    <p>' . e($cv['keyprogramming']) . ' Developer &nbsp;|&nbsp; ' . e($cv['email']) . '</p>
+    <p class="role">' . e($cv['keyprogramming']) . ' Developer</p>
+    <p class="email">' . e($cv['email']) . '</p>
 </div>
+<div class="header-bar"></div>
 
 <div class="content">
 
-    <!-- Contact section -->
-    <h2>Contact</h2>
-    <p class="info-row"><strong>Email:</strong> ' . e($cv['email']) . '</p>
-
-    <!-- Profile section -->
     ' . (!empty($cv['profile']) ? '
-    <h2>Profile</h2>
+    <h2>Profile Summary</h2>
     <p>' . e($cv['profile']) . '</p>
     ' : '') . '
 
-    <!-- Education section -->
     ' . (!empty($cv['education']) ? '
     <h2>Education</h2>
-    <p>' . e($cv['education']) . '</p>
+    <p>' . nl2br(e($cv['education'])) . '</p>
     ' : '') . '
 
-    <!-- Work experience section -->
     ' . (!empty($cv['work_experience']) ? '
     <h2>Work Experience</h2>
     <p>' . nl2br(e($cv['work_experience'])) . '</p>
     ' : '') . '
 
-    <!-- Skills section -->
     ' . (!empty($skillsText) ? '
     <h2>Skills &amp; Technologies</h2>
     <p class="skills">' . e($skillsText) . '</p>
     ' : '') . '
 
-    <!-- Key programming language -->
     <h2>Key Programming Language</h2>
     <p>' . e($cv['keyprogramming']) . '</p>
 
-    <!-- Links section -->
     ' . (!empty($cv['URLlinks']) ? '
     <h2>Links</h2>
     <p>' . e($cv['URLlinks']) . '</p>
     ' : '') . '
 
-    <!-- Footer -->
+    <h2>Contact</h2>
+    <p>' . e($cv['email']) . '</p>
+
     <div class="footer">
-        Generated by AstonCV &nbsp;|&nbsp; ' . date('d F Y') . '
+        Generated by AstonCV &nbsp;|&nbsp; ' . date('d F Y') . ' &nbsp;|&nbsp; Isaac Adjei (240191278)
     </div>
 
 </div>
@@ -200,25 +206,23 @@ $html = '
 ';
 
 // ================================================
-// GENERATE THE PDF USING mPDF
+// I generate the PDF using mPDF
 // ================================================
 
-// Create a new mPDF instance with A4 page size
+// I create a new mPDF instance with A4 page size and no top margin
 $mpdf = new \Mpdf\Mpdf([
-    'margin_top'    => 0,    // No top margin - our header handles spacing
+    'margin_top'    => 0,
     'margin_bottom' => 15,
     'margin_left'   => 15,
     'margin_right'  => 15,
 ]);
 
-// Write our HTML into the PDF
+// I write the HTML into the PDF
 $mpdf->WriteHTML($html);
 
-// Set the filename for the download
-// e.g. "Samuel_Acquah_CV.pdf"
+// I create a clean filename e.g. "Samuel_Acquah_CV.pdf"
 $filename = str_replace(' ', '_', $cv['name']) . '_CV.pdf';
 
-// Send the PDF to the browser as a download
-// 'D' means force download, 'I' would open inline in browser
+// I send the PDF to the browser as a forced download
+// 'D' = download, 'I' = open inline
 $mpdf->Output($filename, 'D');
-?>
