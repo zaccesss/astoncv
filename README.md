@@ -55,7 +55,7 @@
 
 ## Overview
 
-AstonCV is a full-stack CV database website built for **DG1IAD Portfolio 3** at Aston University. It allows anyone to browse and search student CVs publicly, register an account, manage their own CV once logged in, and download any CV as a professionally formatted PDF.
+AstonCV is a full-stack CV database website built as a **Portfolio** at Aston University. It allows anyone to browse and search student CVs publicly, register an account, manage their own CV once logged in, and download any CV as a professionally formatted PDF.
 
 Built with plain PHP 8.2 and MySQL - no frameworks - and deployed on the Aston University internal hosting server. PDF generation is handled server-side using the mPDF library installed via Composer. A custom domain redirect is configured via Cloudflare so the site is accessible at both the Aston URL and the short link.
 
