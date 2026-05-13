@@ -285,7 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="name">Full Name <span class="required">*</span></label>
                     <input type="text" id="name" name="name"
                            value="<?php echo htmlspecialchars($old['name']); ?>"
-                           placeholder="e.g. Isaac Adjei"
+                           placeholder="e.g. Alex Johnson"
                            autocomplete="name">
                 </div>
 
