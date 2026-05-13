@@ -330,7 +330,7 @@ sort($languages);
             </div>
             <div class="form-group">
                 <label for="contact_message">Message <span class="required">*</span></label>
-                <textarea id="contact_message" name="contact_message" placeholder="Write your message here..." required></textarea>
+                <textarea id="contact_message" name="contact_message" placeholder="e.g. Hi, I am a recruiter interested in connecting with Computer Science graduates for a software engineering role..." required></textarea>
             </div>
             <button type="submit" class="submit-button">Send Message</button>
         </form>
