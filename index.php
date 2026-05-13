@@ -302,7 +302,7 @@ sort($languages);
 <section class="section" style="background: var(--bg-white); border-top: 1px solid var(--border-color);">
     <div class="container">
         <h2>Get in Touch</h2>
-        <p class="section-intro">Have a question or want to get involved? Send a message or email directly at <a href="mailto:contact@zacess.com" style="color: var(--primary-color); font-weight: 600;">contact@zacess.com</a></p>
+        <p class="section-intro">Have a question or want to get involved? Send a message or email directly at <a href="mailto:contact@isaacadjei.me" style="color: var(--primary-color); font-weight: 600;">contact@isaacadjei.me</a></p>
 
         <?php if (isset($_GET['msg']) && $_GET['msg'] === 'sent'): ?>
             <div class="alert-success">Message sent - we will get back to you soon.</div>
@@ -369,7 +369,7 @@ sort($languages);
     </div>
     <div class="footer-bottom">
         <p>&copy; 2026 AstonCV - Isaac Adjei (240191278) - DG1IAD Portfolio 3</p>
-        <p><a href="mailto:contact@zacess.com">contact@zacess.com</a></p>
+        <p><a href="mailto:contact@isaacadjei.me">contact@isaacadjei.me</a></p>
     </div>
 </footer>
 

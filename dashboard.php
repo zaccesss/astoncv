@@ -595,7 +595,7 @@ $profilePreview = !empty($cv['profile'])
     </div>
     <div class="footer-bottom">
         <p>&copy; 2026 AstonCV - Isaac Adjei (240191278) - DG1IAD Portfolio 3</p>
-        <p><a href="mailto:contact@zacess.com">contact@zacess.com</a></p>
+        <p><a href="mailto:contact@isaacadjei.me">contact@isaacadjei.me</a></p>
     </div>
 </footer>
 

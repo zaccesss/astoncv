@@ -7,7 +7,7 @@
  * I handle the enquiry form submission from index.php.
  * I validate all inputs before doing anything with them.
  * I use a honeypot field to silently block spam bots.
- * I send the message to contact@zacess.com using PHP mail().
+ * I send the message to contact@isaacadjei.me using PHP mail().
  * I redirect back to index.php with a success or error flag.
  *
  * SECURITY MEASURES USED HERE:
@@ -58,10 +58,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // I build the email
-$to      = 'contact@zacess.com';
+$to      = 'contact@isaacadjei.me';
 $subject = 'AstonCV Enquiry from ' . $name;
 $body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: noreply@zacess.com\r\nReply-To: $email\r\n";
+$headers = "From: noreply@isaacadjei.me\r\nReply-To: $email\r\n";
 
 // I attempt to send — only works on the live server, not localhost
 mail($to, $subject, $body, $headers);
