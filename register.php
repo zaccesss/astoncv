@@ -285,7 +285,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="name">Full Name <span class="required">*</span></label>
                     <input type="text" id="name" name="name"
                            value="<?php echo htmlspecialchars($old['name']); ?>"
-                           placeholder="e.g. Alex Johnson"
+                           placeholder="Your full name"
                            autocomplete="name">
                 </div>
 
@@ -293,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="email">Email Address <span class="required">*</span></label>
                     <input type="email" id="email" name="email"
                            value="<?php echo htmlspecialchars($old['email']); ?>"
-                           placeholder="e.g. alex.johnson@aston.ac.uk"
+                           placeholder="your@email.com"
                            autocomplete="email">
                 </div>
 
@@ -301,7 +301,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password">Password <span class="required">*</span></label>
                     <div class="password-wrapper">
                         <input type="password" id="password" name="password"
-                               placeholder="Min 8 chars, uppercase, number, special char"
+                               placeholder="Choose a strong password"
                                autocomplete="new-password"
                                oninput="checkPasswordStrength(this.value)">
                         <button type="button"
@@ -338,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="keyprogramming">Key Programming Language <span class="required">*</span></label>
                     <input type="text" id="keyprogramming" name="keyprogramming"
                            value="<?php echo htmlspecialchars($old['keyprogramming']); ?>"
-                           placeholder="e.g. Python">
+                           placeholder="Your main language">
                 </div>
 
                 <div class="form-group">
@@ -348,20 +348,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <input type="text" id="skills" name="skills"
                            value="<?php echo htmlspecialchars($old['skills']); ?>"
-                           placeholder="e.g. Python, JavaScript, MySQL, HTML, CSS">
+                           placeholder="Your skills, separated by commas">
                     <span class="field-hint">Separate each skill with a comma</span>
                 </div>
 
                 <div class="form-group">
                     <label for="profile">Profile Summary <span class="required">*</span></label>
                     <textarea id="profile" name="profile"
-                              placeholder="e.g. Third-year Computer Science student with experience in Python and web development, looking for graduate roles in software engineering..."><?php echo htmlspecialchars($old['profile']); ?></textarea>
+                              placeholder="Tell us about yourself"><?php echo htmlspecialchars($old['profile']); ?></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="education">Education <span class="required">*</span></label>
                     <textarea id="education" name="education"
-                              placeholder="e.g. BEng Computer Science, Aston University (2024-present)"><?php echo htmlspecialchars($old['education']); ?></textarea>
+                              placeholder="Your education history"><?php echo htmlspecialchars($old['education']); ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -370,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <span style="color: var(--text-light); font-weight: 400;">(optional)</span>
                     </label>
                     <textarea id="work_experience" name="work_experience"
-                              placeholder="e.g. Software Intern at XYZ Ltd (2024) - worked on..."><?php echo htmlspecialchars($old['work_experience']); ?></textarea>
+                              placeholder="Your work experience"><?php echo htmlspecialchars($old['work_experience']); ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -380,7 +380,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <input type="text" id="URLlinks" name="URLlinks"
                            value="<?php echo htmlspecialchars($old['URLlinks']); ?>"
-                           placeholder="e.g. https://github.com/alexjohnson, https://linkedin.com/in/alexjohnson">
+                           placeholder="GitHub, LinkedIn or portfolio links">
                 </div>
 
                 <button type="submit" class="submit-button">Create Account</button>
