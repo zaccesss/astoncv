@@ -217,7 +217,17 @@ Both links point to the same live site.
 
 **Isaac Adjei**
 BEng Electronic Engineering and Computer Science - [Aston University](https://www.aston.ac.uk)
-[isaacadjei.me](https://isaacadjei.me) - [github.com/zaccesss](https://github.com/zaccesss)
+[isaacadjei.me](https://isaacadjei.me)
+
+---
+
+<a id="contact"></a>
+
+## Contact and Support
+
+Open an [issue](https://github.com/zaccesss/astoncv/issues) in this repository for questions or bugs.
+
+You can also reach me directly at [contact@isaacadjei.me](mailto:contact@isaacadjei.me) or via my [website contact page](https://isaacadjei.me/contact).
 
 ---
 
