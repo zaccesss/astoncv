@@ -322,11 +322,11 @@ sort($languages);
             <input type="text" name="website" value="" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-group">
                 <label for="contact_name">Your Name <span class="required">*</span></label>
-                <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Isaac Adjei" required>
+                <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Alex Johnson" required>
             </div>
             <div class="form-group">
                 <label for="contact_email">Email Address <span class="required">*</span></label>
-                <input type="email" id="contact_email" name="contact_email" placeholder="e.g. yourname@aston.ac.uk" required>
+                <input type="email" id="contact_email" name="contact_email" placeholder="e.g. alex.johnson@aston.ac.uk" required>
             </div>
             <div class="form-group">
                 <label for="contact_message">Message <span class="required">*</span></label>
