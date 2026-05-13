@@ -591,7 +591,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             </label>
                             <input type="text" id="URLlinks" name="URLlinks"
                                    value="<?php echo htmlspecialchars($cv['URLlinks'] ?? ''); ?>"
-                                   placeholder="e.g. https://github.com/yourusername">
+                                   placeholder="e.g. https://github.com/alexjohnson, https://linkedin.com/in/alexjohnson">
                         </div>
 
                         <button type="submit" class="submit-button">Save Changes</button>

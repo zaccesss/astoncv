@@ -293,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="email">Email Address <span class="required">*</span></label>
                     <input type="email" id="email" name="email"
                            value="<?php echo htmlspecialchars($old['email']); ?>"
-                           placeholder="e.g. yourname@aston.ac.uk"
+                           placeholder="e.g. alex.johnson@aston.ac.uk"
                            autocomplete="email">
                 </div>
 
@@ -338,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="keyprogramming">Key Programming Language <span class="required">*</span></label>
                     <input type="text" id="keyprogramming" name="keyprogramming"
                            value="<?php echo htmlspecialchars($old['keyprogramming']); ?>"
-                           placeholder="e.g. Python, C++, Java">
+                           placeholder="e.g. Python">
                 </div>
 
                 <div class="form-group">
@@ -355,7 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label for="profile">Profile Summary <span class="required">*</span></label>
                     <textarea id="profile" name="profile"
-                              placeholder="Write a short summary about yourself"><?php echo htmlspecialchars($old['profile']); ?></textarea>
+                              placeholder="e.g. Third-year Computer Science student with experience in Python and web development, looking for graduate roles in software engineering..."><?php echo htmlspecialchars($old['profile']); ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -380,7 +380,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <input type="text" id="URLlinks" name="URLlinks"
                            value="<?php echo htmlspecialchars($old['URLlinks']); ?>"
-                           placeholder="e.g. https://github.com/yourusername">
+                           placeholder="e.g. https://github.com/alexjohnson, https://linkedin.com/in/alexjohnson">
                 </div>
 
                 <button type="submit" class="submit-button">Create Account</button>
