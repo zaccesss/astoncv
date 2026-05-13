@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1200&color=5c2d82&center=true&vCenter=true&width=600&height=55&lines=Full-Stack+CV+Database+Website;PHP+%7C+MySQL+%7C+Custom+CSS;DG1IAD+Portfolio+3+-+Aston+University;Secure+%7C+Responsive+%7C+Deployed" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&pause=1200&color=5c2d82&center=true&vCenter=true&width=600&height=55&lines=Full-Stack+CV+Database+Website;PHP+%7C+MySQL+%7C+Custom+CSS;Built+at+Aston+University;Secure+%7C+Responsive+%7C+Deployed" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Aston_University-DG1IAD_Portfolio_3-5c2d82?style=for-the-badge&logo=academia" />
+  <img src="https://img.shields.io/badge/Aston_University-Project-5c2d82?style=for-the-badge&logo=academia" />
   <img src="https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white" />
   <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
   <img src="https://img.shields.io/badge/mPDF-PDF_Export-red?style=for-the-badge" />
@@ -28,8 +28,8 @@
   <a href="https://www.linkedin.com/in/isaacadjei">
     <img src="https://img.shields.io/badge/LinkedIn-Isaac_Adjei-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white">
   </a>
-  <a href="mailto:contact@zacess.com">
-    <img src="https://img.shields.io/badge/Email-contact@zacess.com-ff6f61?style=for-the-badge&logo=gmail&logoColor=white">
+  <a href="mailto:contact@isaacadjei.me">
+    <img src="https://img.shields.io/badge/Email-contact@isaacadjei.me-ff6f61?style=for-the-badge&logo=gmail&logoColor=white">
   </a>
 </p>
 
@@ -46,7 +46,7 @@
   <a href="#languages-and-tools">Languages & Tools</a> •
   <a href="#file-structure">File Structure</a> •
   <a href="#setup">Setup</a> •
-  <a href="#student">Student</a>
+  <a href="#about">About</a>
 </p>
 
 ---
@@ -109,7 +109,7 @@ Both links point to the same live site.
 - Scroll reveal animations on CV cards using IntersectionObserver
 - Preloader on first page load
 - Sticky dark navbar with scroll blur effect
-- Real footer with navigation, project links and contact email
+- Real footer with navigation and project links
 - Fully responsive and mobile friendly
 
 ---
@@ -202,7 +202,7 @@ Both links point to the same live site.
 
 1. Clone the repo into `C:\xampp\htdocs\astoncv`
 2. Copy `config.example.php` to `config.php` and fill in your local database credentials
-3. Import `sql/cvs.sql` into MySQL via phpMyAdmin
+3. Create the MySQL database and set up the schema (contact the maintainer for the schema file)
 4. Run `composer install` to install mPDF
 5. Start Apache and MySQL in XAMPP
 6. Visit `http://localhost/astoncv`
@@ -211,14 +211,13 @@ Both links point to the same live site.
 
 ---
 
-<a id="student"></a>
+<a id="about"></a>
 
-## Student
+## About
 
 **Isaac Adjei**
-Student ID: 240191278
-BEng Electronic Engineering and Computer Science
-Aston University - DG1IAD Portfolio 3
+BEng Electronic Engineering and Computer Science - [Aston University](https://www.aston.ac.uk)
+[isaacadjei.me](https://isaacadjei.me) - [github.com/zaccesss](https://github.com/zaccesss)
 
 ---
 

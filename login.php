@@ -275,8 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 AstonCV - Isaac Adjei (240191278) - DG1IAD Portfolio 3</p>
-        <p><a href="mailto:contact@zacess.com">contact@zacess.com</a></p>
+        <p>&copy; 2026 AstonCV - <a href="https://www.aston.ac.uk" target="_blank" rel="noopener noreferrer">Aston University</a> - Isaac Adjei</p>
     </div>
 </footer>
 
