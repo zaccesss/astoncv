@@ -322,15 +322,15 @@ sort($languages);
             <input type="text" name="website" value="" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-group">
                 <label for="contact_name">Your Name <span class="required">*</span></label>
-                <input type="text" id="contact_name" name="contact_name" placeholder="e.g. Alex Johnson" required>
+                <input type="text" id="contact_name" name="contact_name" placeholder="Your name" required>
             </div>
             <div class="form-group">
                 <label for="contact_email">Email Address <span class="required">*</span></label>
-                <input type="email" id="contact_email" name="contact_email" placeholder="e.g. alex.johnson@aston.ac.uk" required>
+                <input type="email" id="contact_email" name="contact_email" placeholder="your@email.com" required>
             </div>
             <div class="form-group">
                 <label for="contact_message">Message <span class="required">*</span></label>
-                <textarea id="contact_message" name="contact_message" placeholder="e.g. Hi, I am a recruiter interested in connecting with Computer Science graduates for a software engineering role..." required></textarea>
+                <textarea id="contact_message" name="contact_message" placeholder="What's on your mind?" required></textarea>
             </div>
             <button type="submit" class="submit-button">Send Message</button>
         </form>
