@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                            id="email"
                            name="email"
                            value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
-                           placeholder="e.g. alex.johnson@aston.ac.uk"
+                           placeholder="your@email.com"
                            autocomplete="email"
                            <?php echo $lockedOut ? 'disabled' : ''; ?>>
                 </div>
@@ -198,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                         <input type="password"
                                id="password"
                                name="password"
-                               placeholder="Enter your password"
+                               placeholder="Your password"
                                autocomplete="current-password"
                                <?php echo $lockedOut ? 'disabled' : ''; ?>>
                         <!-- I use an SVG eye icon for the toggle button -->
