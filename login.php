@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                            id="email"
                            name="email"
                            value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
-                           placeholder="e.g. yourname@aston.ac.uk"
+                           placeholder="e.g. alex.johnson@aston.ac.uk"
                            autocomplete="email"
                            <?php echo $lockedOut ? 'disabled' : ''; ?>>
                 </div>
