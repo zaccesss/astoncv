@@ -36,6 +36,27 @@ Planned or in progress - not yet in a release.
 
 ---
 
+## [2.2.0] - 2026-05-13
+
+### Added
+
+- `LICENSE` - MIT licence
+- `CHANGELOG.md`, `SECURITY.md`, `ROADMAP.md` - standard repo meta files
+- `.github/workflows/php-lint.yml` - CI that runs PHP syntax check on push and PR to main
+- `.github/PULL_REQUEST_TEMPLATE.md` and `.github/ISSUE_TEMPLATE/bug_report.md`
+- Aston University SVG favicon on all pages
+
+### Updated
+
+- Footer on all pages - removed student ID and module code, replaced with Aston University link
+- Student section in README renamed to About, student ID and module code removed
+- README setup instructions updated to reflect deleted `sql/cvs.sql`
+- All form placeholders replaced with natural descriptive text across `index.php`, `login.php`, `register.php` and `update.php`
+- Student ID removed from generated PDF footer in `export_cv.php`
+- Contact email updated from `contact@zacess.com` to `contact@isaacadjei.me` throughout
+
+---
+
 ## [2.1.0] - 2026-05-13
 
 ### Updated
