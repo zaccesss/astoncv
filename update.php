@@ -551,7 +551,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             <label for="keyprogramming">Key Programming Language <span class="required">*</span></label>
                             <input type="text" id="keyprogramming" name="keyprogramming"
                                    value="<?php echo htmlspecialchars($cv['keyprogramming']); ?>"
-                                   placeholder="e.g. Python">
+                                   placeholder="Your main language">
                         </div>
 
                         <div class="form-group">
@@ -561,18 +561,18 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             </label>
                             <input type="text" id="skills" name="skills"
                                    value="<?php echo htmlspecialchars($cv['skills'] ?? ''); ?>"
-                                   placeholder="e.g. Python, JavaScript, MySQL, HTML, CSS">
+                                   placeholder="Your skills, separated by commas">
                             <span class="field-hint">Separate each skill with a comma</span>
                         </div>
 
                         <div class="form-group">
                             <label for="profile">Profile Summary <span class="required">*</span></label>
-                            <textarea id="profile" name="profile" placeholder="e.g. Third-year Computer Science student with experience in Python and web development, looking for graduate roles in software engineering..."><?php echo htmlspecialchars($cv['profile']); ?></textarea>
+                            <textarea id="profile" name="profile" placeholder="Tell us about yourself"><?php echo htmlspecialchars($cv['profile']); ?></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="education">Education <span class="required">*</span></label>
-                            <textarea id="education" name="education" placeholder="e.g. BEng Computer Science, Aston University (2024-present)"><?php echo htmlspecialchars($cv['education']); ?></textarea>
+                            <textarea id="education" name="education" placeholder="Your education history"><?php echo htmlspecialchars($cv['education']); ?></textarea>
                         </div>
 
                         <div class="form-group">
@@ -581,7 +581,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                                 <span style="color: var(--text-light); font-weight: 400;">(optional)</span>
                             </label>
                             <textarea id="work_experience" name="work_experience"
-                                      placeholder="e.g. Software Intern at XYZ Ltd (2024) - worked on..."><?php echo htmlspecialchars($cv['work_experience'] ?? ''); ?></textarea>
+                                      placeholder="Your work experience"><?php echo htmlspecialchars($cv['work_experience'] ?? ''); ?></textarea>
                         </div>
 
                         <div class="form-group">
@@ -591,7 +591,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             </label>
                             <input type="text" id="URLlinks" name="URLlinks"
                                    value="<?php echo htmlspecialchars($cv['URLlinks'] ?? ''); ?>"
-                                   placeholder="e.g. https://github.com/alexjohnson, https://linkedin.com/in/alexjohnson">
+                                   placeholder="GitHub, LinkedIn or portfolio links">
                         </div>
 
                         <button type="submit" class="submit-button">Save Changes</button>
@@ -626,7 +626,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             <label for="current_password">Current Password <span class="required">*</span></label>
                             <div class="password-wrapper">
                                 <input type="password" id="current_password" name="current_password"
-                                       placeholder="Enter your current password"
+                                       placeholder="Your current password"
                                        autocomplete="current-password">
                                 <button type="button" class="password-toggle"
                                         onclick="togglePassword('current_password', 'eye1')"
@@ -645,7 +645,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             <label for="new_password">New Password <span class="required">*</span></label>
                             <div class="password-wrapper">
                                 <input type="password" id="new_password" name="new_password"
-                                       placeholder="Min 8 chars, uppercase, number, special char"
+                                       placeholder="Your new password"
                                        autocomplete="new-password"
                                        oninput="checkPasswordStrength(this.value)">
                                 <button type="button" class="password-toggle"
@@ -675,7 +675,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                             <label for="confirm_password">Confirm New Password <span class="required">*</span></label>
                             <div class="password-wrapper">
                                 <input type="password" id="confirm_password" name="confirm_password"
-                                       placeholder="Repeat your new password"
+                                       placeholder="Confirm your new password"
                                        autocomplete="new-password"
                                        oninput="checkPasswordMatch()">
                                 <button type="button" class="password-toggle"
