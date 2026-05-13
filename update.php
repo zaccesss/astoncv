@@ -204,6 +204,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update CV - AstonCV</title>
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="style.css">
     <style>
         /* I lay out the update page as a two-column grid like the dashboard */
