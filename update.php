@@ -567,12 +567,12 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 
                         <div class="form-group">
                             <label for="profile">Profile Summary <span class="required">*</span></label>
-                            <textarea id="profile" name="profile"><?php echo htmlspecialchars($cv['profile']); ?></textarea>
+                            <textarea id="profile" name="profile" placeholder="e.g. Third-year Computer Science student with experience in Python and web development, looking for graduate roles in software engineering..."><?php echo htmlspecialchars($cv['profile']); ?></textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="education">Education <span class="required">*</span></label>
-                            <textarea id="education" name="education"><?php echo htmlspecialchars($cv['education']); ?></textarea>
+                            <textarea id="education" name="education" placeholder="e.g. BEng Computer Science, Aston University (2024-present)"><?php echo htmlspecialchars($cv['education']); ?></textarea>
                         </div>
 
                         <div class="form-group">
