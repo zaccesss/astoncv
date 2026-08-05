@@ -13,7 +13,8 @@ AstonCV is a university portfolio project. Only the latest version on `main` is 
 
 ## Reporting a Vulnerability
 
-**Do not open a public GitHub issue for security concerns.**
+> [!WARNING]
+> Do not open a public GitHub issue for security concerns.
 
 If you find a security vulnerability - such as an XSS flaw, SQL injection risk, session handling issue or accidentally committed credentials - please report it privately.
 

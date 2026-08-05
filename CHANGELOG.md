@@ -45,6 +45,8 @@ PATCH - bug fixes, typo corrections, small updates
   ROADMAP.md (shipped in v2.0.0, not still planned as this file previously implied)
 - ROADMAP.md synced with this file: current version corrected from v2.0.0 to v2.2.1 and Completed
   entries added for v2.2.0 and v2.2.1
+- Markdown alert callouts added to README.md, SECURITY.md and NOTICE.md for the genuine
+  prerequisite, warning and licensing gotchas each file already documented
 
 Planned or in progress - not yet in a release.
 
