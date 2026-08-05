@@ -38,10 +38,15 @@ PATCH - bug fixes, typo corrections, small updates
 
 ## [Unreleased]
 
+### Updated
+
+- README rewritten to remove animated capsule-render and typing-svg banners, merge the duplicate
+  Links and Contact and Support sections into one and reconcile the avatar upload status with
+  ROADMAP.md (shipped in v2.0.0, not still planned as this file previously implied)
+
 Planned or in progress - not yet in a release.
 
 - Unit and integration test suite
-- Avatar upload support
 - Pagination on the CV browse page
 
 ---
