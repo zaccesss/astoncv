@@ -2,7 +2,7 @@
 
 This roadmap tracks the development plan for AstonCV.
 
-**Current version: v2.0.0 - Resubmission complete**
+**Current version: v2.2.1 - Security fix**
 
 ---
 
@@ -53,13 +53,25 @@ This roadmap tracks the development plan for AstonCV.
 
 - Contact email migrated to `isaacadjei.me` domain across all pages
 
+### v2.2.0 - Repo meta and CI
+
+- `LICENSE`, `CHANGELOG.md`, `SECURITY.md` and `ROADMAP.md` added as standard repo meta files
+- `.github/workflows/php-lint.yml` added as CI, running a PHP syntax check on push and pull request to main
+- `.github/PULL_REQUEST_TEMPLATE.md` and `.github/ISSUE_TEMPLATE/bug_report.md` added
+- Aston University SVG favicon added on all pages
+- Footer, form placeholders and README updated to remove leftover student ID and module code references
+
+### v2.2.1 - Security fix
+
+- Scoped the php-lint workflow token to read-only contents access, closing a CodeQL missing workflow permissions alert
+
 ---
 
 ## Planned
 
 These items are planned but have no committed timeline.
 
-- Unit and integration test suite with a CI runner
+- Unit and integration test suite
 - Pagination on the CV browse page
 - Admin panel for user management
 - Email delivery confirmation via SMTP (replacing `mail()`)
