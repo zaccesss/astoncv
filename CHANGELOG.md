@@ -43,6 +43,8 @@ PATCH - bug fixes, typo corrections, small updates
 - README rewritten to remove animated capsule-render and typing-svg banners, merge the duplicate
   Links and Contact and Support sections into one and reconcile the avatar upload status with
   ROADMAP.md (shipped in v2.0.0, not still planned as this file previously implied)
+- ROADMAP.md synced with this file: current version corrected from v2.0.0 to v2.2.1 and Completed
+  entries added for v2.2.0 and v2.2.1
 
 Planned or in progress - not yet in a release.
 
