@@ -129,10 +129,13 @@ See [SECURITY.md](SECURITY.md) for the full policy and how to report a vulnerabi
 
 1. Clone the repo into `C:\xampp\htdocs\astoncv`
 2. Copy `config.example.php` to `config.php` and fill in local database credentials
-3. Create the MySQL database and set up the schema (contact the maintainer for the schema file)
+3. Create the MySQL database and set up the schema
 4. Run `composer install` to install mPDF
 5. Start Apache and MySQL in XAMPP
 6. Visit `http://localhost/astoncv`
+
+> [!IMPORTANT]
+> The database schema is not in this repo. Contact the maintainer for the schema file before step 3, or setup will not get past creating the database.
 
 `config.php` and `vendor/` are gitignored, so real credentials and the mPDF library never end up in this repo.
 
