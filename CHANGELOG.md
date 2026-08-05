@@ -26,6 +26,16 @@ PATCH - bug fixes, typo corrections, small updates
 
 ---
 
+## [2.2.1] - 2026-08-05
+
+### Security
+
+- Scoped the php-lint workflow token to read-only contents access, closing a CodeQL
+  actions/missing-workflow-permissions alert. The job only checks out the repo and runs a
+  syntax check, it never writes back.
+
+---
+
 ## [Unreleased]
 
 Planned or in progress - not yet in a release.
