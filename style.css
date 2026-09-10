@@ -1,7 +1,7 @@
 /*
   ============================================================
-  AstonCV — style.css
-  DG1IAD Portfolio 3 — Isaac Adjei (240191278)
+  AstonCV - style.css
+  DG1IAD Portfolio 3 - Isaac Adjei (240191278)
   BEng EECS, Aston University
   ============================================================
   I import Space Grotesk for headings and DM Sans for body text.
@@ -11,14 +11,14 @@
 */
 
 /* ============================================================
-   GOOGLE FONTS — I load two fonts from Google's CDN.
+   GOOGLE FONTS - I load two fonts from Google's CDN.
    Space Grotesk is a bold, techy heading font.
    DM Sans is a clean, readable body font.
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 
 /* ============================================================
-   CSS RESET — I reset margins, padding and box-sizing
+   CSS RESET - I reset margins, padding and box-sizing
    so every browser starts from the same baseline.
    ============================================================ */
 *,
@@ -30,7 +30,7 @@
 }
 
 /* ============================================================
-   CSS VARIABLES — I define my colours, shadows and timings
+   CSS VARIABLES - I define my colours, shadows and timings
    here so I can change the whole site by editing one place.
    ============================================================ */
 :root {
@@ -40,8 +40,8 @@
   --primary-light: #7b4fa6; /* lighter shade for accents */
   --primary-faint: #f3eefa; /* very light purple for backgrounds */
 
-  /* --- Accent — I replace the old yellow with clean lavender --- */
-  --accent-color: #e8e0f0; /* soft lavender — replaces #ffb81c yellow */
+  /* --- Accent - I replace the old yellow with clean lavender --- */
+  --accent-color: #e8e0f0; /* soft lavender - replaces #ffb81c yellow */
   --accent-hover: #d4c8e8; /* slightly darker lavender for hover */
   --accent-bright: #a78bca; /* medium purple for badges and tags */
 
@@ -76,7 +76,7 @@
 }
 
 /* ============================================================
-   BASE — I set the default font, line-height and background
+   BASE - I set the default font, line-height and background
    for the entire page.
    ============================================================ */
 html {
@@ -111,7 +111,7 @@ h6 {
 }
 
 /* ============================================================
-   ACCESSIBILITY — Skip link for keyboard users
+   ACCESSIBILITY - Skip link for keyboard users
    ============================================================ */
 .skip-link {
   position: absolute;
@@ -132,7 +132,7 @@ h6 {
 }
 
 /* ============================================================
-   PRELOADER — Brief loading screen that fades out on load.
+   PRELOADER - Brief loading screen that fades out on load.
    I use a simple spinner over a dark purple background.
    ============================================================ */
 #preloader {
@@ -181,7 +181,7 @@ h6 {
 }
 
 /* ============================================================
-   HEADER / NAVBAR — Sticky dark navbar that sits flush
+   HEADER / NAVBAR - Sticky dark navbar that sits flush
    against the hero. No gap between them.
    ============================================================ */
 #main-header {
@@ -269,7 +269,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   LAYOUT — Container and Section wrappers
+   LAYOUT - Container and Section wrappers
    ============================================================ */
 .container {
   max-width: 1200px;
@@ -284,7 +284,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   HERO — Full-width campus photo with deep purple overlay
+   HERO - Full-width campus photo with deep purple overlay
    on index.php. Other pages get a slimmer solid purple hero.
    ============================================================ */
 .hero {
@@ -300,7 +300,7 @@ nav a.active::after {
   margin-top: 0;
 }
 
-/* I add this class on index.php only — shows the campus photo */
+/* I add this class on index.php only - shows the campus photo */
 .hero--image {
   background:
     linear-gradient(
@@ -388,7 +388,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   STATS BAR — Animated counters shown on the hero
+   STATS BAR - Animated counters shown on the hero
    ============================================================ */
 .stats-bar {
   display: flex;
@@ -423,7 +423,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   MARQUEE STRIP — Pure CSS infinite scroll below the hero.
+   MARQUEE STRIP - Pure CSS infinite scroll below the hero.
    I duplicate the content in HTML so the loop looks seamless.
    ============================================================ */
 .marquee-strip {
@@ -435,7 +435,7 @@ nav a.active::after {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* I animate two copies of the track — when the first set
+/* I animate two copies of the track - when the first set
    scrolls fully off screen, the second takes its place */
 .marquee-track {
   display: inline-flex;
@@ -469,7 +469,7 @@ nav a.active::after {
   flex-shrink: 0;
 }
 
-/* I move the track left by exactly 50% — because I duplicate
+/* I move the track left by exactly 50% - because I duplicate
    the content, this creates a seamless infinite loop */
 @keyframes marqueeScroll {
   0% {
@@ -481,7 +481,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   CTA BUTTONS — White on dark hero, purple on light pages
+   CTA BUTTONS - White on dark hero, purple on light pages
    ============================================================ */
 .cta-button {
   display: inline-flex;
@@ -517,7 +517,7 @@ nav a.active::after {
   transform: translateY(0);
 }
 
-/* Outlined purple button — used on white backgrounds */
+/* Outlined purple button - used on white backgrounds */
 .cta-button-secondary {
   background: transparent;
   color: var(--primary-color);
@@ -531,7 +531,7 @@ nav a.active::after {
   box-shadow: var(--shadow-md);
 }
 
-/* Solid purple button — used in forms and cards */
+/* Solid purple button - used in forms and cards */
 .cta-button-primary {
   background: var(--primary-color);
   color: white;
@@ -577,7 +577,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   SEARCH AND FILTER BAR — Used on index.php
+   SEARCH AND FILTER BAR - Used on index.php
    ============================================================ */
 .search-form {
   display: flex;
@@ -665,7 +665,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   CV GRID — Responsive card grid on index.php
+   CV GRID - Responsive card grid on index.php
    ============================================================ */
 .cv-grid {
   display: grid;
@@ -675,7 +675,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   CV CARD — Redesigned with left border accent, avatar,
+   CV CARD - Redesigned with left border accent, avatar,
    skill badge and hover animation.
    ============================================================ */
 .cv-card {
@@ -804,7 +804,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   SKILL BADGE — Small pill used on cards and CV detail page
+   SKILL BADGE - Small pill used on cards and CV detail page
    ============================================================ */
 .skill-badge {
   display: inline-flex;
@@ -829,7 +829,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   CV DETAIL PAGE — Styled to look like a real CV document
+   CV DETAIL PAGE - Styled to look like a real CV document
    ============================================================ */
 .cv-detail-card {
   background: var(--bg-white);
@@ -920,7 +920,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   FORM CARD — Login, register, and update pages
+   FORM CARD - Login, register and update pages
    ============================================================ */
 .form-card {
   background: var(--bg-white);
@@ -946,7 +946,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   SPLIT LAYOUT — Login and register pages.
+   SPLIT LAYOUT - Login and register pages.
    Left: campus photo. Right: form.
    ============================================================ */
 .split-layout {
@@ -990,7 +990,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   FORM GROUPS — Labels, inputs, textareas
+   FORM GROUPS - Labels, inputs, textareas
    ============================================================ */
 .form-group {
   margin-bottom: 1.5rem;
@@ -1118,7 +1118,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   ALERT MESSAGES — Success and error banners
+   ALERT MESSAGES - Success and error banners
    ============================================================ */
 .alert-success,
 .alert-error {
@@ -1155,7 +1155,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   ERROR MESSAGE — Inline validation below a field
+   ERROR MESSAGE - Inline validation below a field
    ============================================================ */
 .error-message {
   display: none;
@@ -1170,7 +1170,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   DASHBOARD PAGE — Post-login personal dashboard
+   DASHBOARD PAGE - Post-login personal dashboard
    ============================================================ */
 .dashboard-grid {
   display: grid;
@@ -1282,7 +1282,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   EDUCATION AND WORK ITEMS — Portfolio 1 pages
+   EDUCATION AND WORK ITEMS - Portfolio 1 pages
    I keep these so portfolio.html doesn't break.
    ============================================================ */
 .education-item,
@@ -1346,7 +1346,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   TECH GRID — Portfolio 1 tech stack section
+   TECH GRID - Portfolio 1 tech stack section
    ============================================================ */
 .skills-section {
   background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
@@ -1423,7 +1423,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   PORTFOLIO AND PROJECT STYLES — Portfolio 1 pages
+   PORTFOLIO AND PROJECT STYLES - Portfolio 1 pages
    ============================================================ */
 .portfolio-hero {
   background: linear-gradient(
@@ -1561,7 +1561,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   PROFESSIONAL LINKS — Portfolio 1
+   PROFESSIONAL LINKS - Portfolio 1
    ============================================================ */
 .professional-links {
   background: linear-gradient(
@@ -1623,7 +1623,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   CONTACT STYLES — Portfolio 1
+   CONTACT STYLES - Portfolio 1
    ============================================================ */
 .contact-info {
   background: var(--bg-white);
@@ -1706,7 +1706,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   MODAL — Portfolio 1 contact page
+   MODAL - Portfolio 1 contact page
    ============================================================ */
 .modal {
   display: none;
@@ -1809,7 +1809,7 @@ nav a.active::after {
 }
 
 /* ============================================================
-   FOOTER — Real content with links, not just a copyright line
+   FOOTER - Real content with links, not just a copyright line
    ============================================================ */
 footer {
   background: var(--bg-dark);
@@ -1901,7 +1901,7 @@ footer {
 }
 
 /* ============================================================
-   HERO PROFILE IMAGE — Used on Portfolio 1 index.html
+   HERO PROFILE IMAGE - Used on Portfolio 1 index.html
    ============================================================ */
 .profile-image {
   width: 160px;
@@ -1951,7 +1951,7 @@ blockquote {
 }
 
 /* ============================================================
-   LEARNING JOURNEY — Portfolio 1
+   LEARNING JOURNEY - Portfolio 1
    ============================================================ */
 .learning-journey {
   margin-top: 3.5rem;
@@ -2001,7 +2001,7 @@ blockquote {
 }
 
 /* ============================================================
-   INTERESTS — Portfolio 1
+   INTERESTS - Portfolio 1
    ============================================================ */
 .interests-list {
   list-style: disc;
@@ -2021,7 +2021,7 @@ blockquote {
 }
 
 /* ============================================================
-   SCROLL REVEAL — JS adds .revealed when elements enter view
+   SCROLL REVEAL - JS adds .revealed when elements enter view
    ============================================================ */
 .reveal {
   opacity: 0;
@@ -2054,7 +2054,7 @@ blockquote {
 }
 
 /* ============================================================
-   NO RESULTS — Empty state when filter finds nothing
+   NO RESULTS - Empty state when filter finds nothing
    ============================================================ */
 .no-results {
   text-align: center;
@@ -2104,7 +2104,7 @@ blockquote {
 }
 
 /* ============================================================
-   RESPONSIVE DESIGN — Mobile adjustments
+   RESPONSIVE DESIGN - Mobile adjustments
    ============================================================ */
 @media (max-width: 768px) {
   .header-content {

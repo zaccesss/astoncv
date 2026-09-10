@@ -6,7 +6,7 @@
  *
  * I allow new users to create an account and add their CV.
  * I validate all fields server-side before saving to the database.
- * I hash passwords using bcrypt — never stored as plain text.
+ * I hash passwords using bcrypt - never stored as plain text.
  * I use a CSRF token to prevent cross-site request forgery.
  * I enforce password strength: uppercase, number, special character.
  * I wrap all database calls in try/catch for proper error handling.
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->fetch()) {
                 $errors[] = "An account with that email already exists.";
             } else {
-                // I hash the password before storing — never plain text
+                // I hash the password before storing - never plain text
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                 // I insert the new user into the database
@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </header>
 
 <!-- ============================================================
-     SPLIT LAYOUT — Library photo left, registration form right
+     SPLIT LAYOUT - Library photo left, registration form right
      ============================================================ -->
 <div class="split-layout">
 

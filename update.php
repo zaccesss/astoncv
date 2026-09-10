@@ -393,7 +393,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 </header>
 
 <!-- ============================================================
-     PAGE BANNER — Aerial campus image, slim strip
+     PAGE BANNER - Aerial campus image, slim strip
      ============================================================ -->
 <div style="background:
         linear-gradient(160deg, rgba(26,10,46,0.82) 0%, rgba(92,45,130,0.72) 100%),
@@ -537,7 +537,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                                    value="<?php echo htmlspecialchars($cv['name']); ?>">
                         </div>
 
-                        <!-- Email is read-only — cannot be changed after registration -->
+                        <!-- Email is read-only - cannot be changed after registration -->
                         <div class="form-group">
                             <label for="email">Email Address</label>
                             <input type="email" id="email"

@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
 <body>
 
 <!-- ============================================================
-     HEADER — Same dark navbar as every other page
+     HEADER - Same dark navbar as every other page
      ============================================================ -->
 <header id="main-header">
     <div class="header-content">
@@ -147,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
 </header>
 
 <!-- ============================================================
-     SPLIT LAYOUT — Campus photo on the left, form on the right.
+     SPLIT LAYOUT - Campus photo on the left, form on the right.
      On mobile the photo is hidden and only the form shows.
      ============================================================ -->
 <div class="split-layout">
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                     </label>
                 </div>
 
-                <!-- Submit — greyed out if account is locked -->
+                <!-- Submit - greyed out if account is locked -->
                 <button type="submit"
                         class="submit-button"
                         <?php echo $lockedOut ? 'disabled' : ''; ?>>
