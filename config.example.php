@@ -4,7 +4,7 @@
  * Example credentials file for AstonCV
  * Student: Isaac Adjei (240191278)
  *
- * Copy this file, rename it to config.php, and fill in real credentials.
+ * Copy this file, rename it to config.php and fill in real credentials.
  * config.php is gitignored and must never be committed to the repository.
  *
  * For XAMPP: dbname = "astoncv", username = "root", password = ""
@@ -18,7 +18,7 @@ $password = "YOUR_DB_PASSWORD";
 ?>
 ```
 
-**`.gitignore`** — tells Git to never upload config.php:
+**`.gitignore`** - tells Git to never upload config.php:
 ```
 # Database credentials - must never be committed to GitHub
 config.php

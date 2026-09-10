@@ -11,7 +11,7 @@
 
 AstonCV is a full-stack CV database website, built as a portfolio project at Aston University. Anyone can browse and search student CVs publicly, register an account, manage their own CV once logged in and download any CV as a professionally formatted PDF.
 
-It is written in plain PHP 8.2 and MySQL with no framework, and it is deployed on the Aston University internal hosting server. PDF generation runs server-side with the mPDF library, installed via Composer. A custom domain redirect is configured through Cloudflare, so the site is reachable at both the Aston URL and the short link.
+It is written in plain PHP 8.2 and MySQL with no framework and it is deployed on the Aston University internal hosting server. PDF generation runs server-side with the mPDF library, installed via Composer. A custom domain redirect is configured through Cloudflare, so the site is reachable at both the Aston URL and the short link.
 
 The UI uses Aston University purple throughout, with Space Grotesk and DM Sans fonts from Google Fonts, real campus photography across all pages and animations including scroll reveal on cards, an animated stats counter bar, a CSS marquee strip and a preloader.
 
@@ -135,7 +135,7 @@ See [SECURITY.md](SECURITY.md) for the full policy and how to report a vulnerabi
 6. Visit `http://localhost/astoncv`
 
 > [!IMPORTANT]
-> The database schema is not in this repo. Contact the maintainer for the schema file before step 3, or setup will not get past creating the database.
+> The database schema is not in this repo. Contact the maintainer for the schema file before step 3 or setup will not get past creating the database.
 
 `config.php` and `vendor/` are gitignored, so real credentials and the mPDF library never end up in this repo.
 
