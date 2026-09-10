@@ -286,7 +286,7 @@ if (!empty($cv['skills'])) {
 <body>
 
 <!-- ============================================================
-     HEADER — Same dark navbar as every other page
+     HEADER - Same dark navbar as every other page
      ============================================================ -->
 <header id="main-header">
     <div class="header-content">
@@ -313,7 +313,7 @@ if (!empty($cv['skills'])) {
 </header>
 
 <!-- ============================================================
-     SLIM HERO — No empty purple box. Just a thin breadcrumb
+     SLIM HERO - No empty purple box. Just a thin breadcrumb
      banner so the page doesn't start abruptly after the navbar.
      ============================================================ -->
 <div class="breadcrumb-bar" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
@@ -328,7 +328,7 @@ if (!empty($cv['skills'])) {
 </div>
 
 <!-- ============================================================
-     MAIN CONTENT — Two-column layout: CV doc + sidebar
+     MAIN CONTENT - Two-column layout: CV doc + sidebar
      ============================================================ -->
 <section class="section">
     <div class="container">
@@ -399,7 +399,7 @@ if (!empty($cv['skills'])) {
                     </div>
                     <?php endif; ?>
 
-                    <!-- Links — I split by | to support multiple URLs -->
+                    <!-- Links - I split by | to support multiple URLs -->
                     <?php if (!empty($cv['URLlinks'])): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Links</div>
@@ -525,7 +525,7 @@ if (!empty($cv['skills'])) {
 </section>
 
 <!-- ============================================================
-     FOOTER — Same as index.php
+     FOOTER - Same as index.php
      ============================================================ -->
 <footer>
     <div class="footer-grid">

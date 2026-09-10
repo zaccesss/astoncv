@@ -11,17 +11,17 @@
  * I redirect back to index.php with a success or error flag.
  *
  * SECURITY MEASURES USED HERE:
- * 1. Honeypot field — bots fill it in, humans leave it empty.
+ * 1. Honeypot field - bots fill it in, humans leave it empty.
  *    If it has any value I silently reject the submission.
- * 2. POST-only — GET requests are rejected immediately.
- * 3. Input validation — all fields checked before processing.
- * 4. Email validation — filter_var ensures a real email format.
- * 5. htmlspecialchars — all output sanitised to prevent XSS.
+ * 2. POST-only - GET requests are rejected immediately.
+ * 3. Input validation - all fields checked before processing.
+ * 4. Email validation - filter_var ensures a real email format.
+ * 5. htmlspecialchars - all output sanitised to prevent XSS.
  */
 
 session_start();
 
-// I only allow POST requests — reject anything else immediately
+// I only allow POST requests - reject anything else immediately
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
     exit;
@@ -63,7 +63,7 @@ $subject = 'AstonCV Enquiry from ' . $name;
 $body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
 $headers = "From: noreply@isaacadjei.me\r\nReply-To: $email\r\n";
 
-// I attempt to send — only works on the live server, not localhost
+// I attempt to send - only works on the live server, not localhost
 mail($to, $subject, $body, $headers);
 
 header('Location: index.php?msg=sent#contact');

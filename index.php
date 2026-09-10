@@ -19,7 +19,7 @@ $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
 // I use try/catch to handle any database errors gracefully
 try {
-    // I fetch total CV count for the stats bar — always the full count
+    // I fetch total CV count for the stats bar - always the full count
     $countStmt = $pdo->query("SELECT COUNT(*) FROM cvs");
     $totalCVs  = (int) $countStmt->fetchColumn();
 
@@ -47,7 +47,7 @@ try {
     // I show a friendly error rather than crashing the page
     $cvs      = [];
     $totalCVs = 0;
-    $dbError  = "Database error — please try again later.";
+    $dbError  = "Database error - please try again later.";
 }
 
 // I collect unique programming languages for the live filter dropdown
@@ -66,7 +66,7 @@ sort($languages);
 <body>
 
 <!-- ============================================================
-     PRELOADER — I show this briefly while the page loads,
+     PRELOADER - I show this briefly while the page loads,
      then JS hides it by adding the .hidden class.
      ============================================================ -->
 <div id="preloader">
@@ -75,7 +75,7 @@ sort($languages);
 </div>
 
 <!-- ============================================================
-     HEADER — Dark purple navbar, flush against the hero.
+     HEADER - Dark purple navbar, flush against the hero.
      Logo now correctly points to images/logo.svg
      ============================================================ -->
 <header id="main-header">
@@ -103,7 +103,7 @@ sort($languages);
 </header>
 
 <!-- ============================================================
-     HERO — Campus photo with purple gradient overlay.
+     HERO - Campus photo with purple gradient overlay.
      I add .hero--image so the CSS applies the background photo.
      ============================================================ -->
 <section class="hero hero--image">
@@ -124,7 +124,7 @@ sort($languages);
             <?php endif; ?>
         </div>
 
-        <!-- Stats bar — animated counters showing live numbers -->
+        <!-- Stats bar - animated counters showing live numbers -->
         <div class="stats-bar">
             <div class="stat-item">
                 <span class="stat-number" data-target="<?php echo $totalCVs; ?>">0</span>
@@ -139,7 +139,7 @@ sort($languages);
 </section>
 
 <!-- ============================================================
-     MARQUEE — Pure CSS infinite scroll strip.
+     MARQUEE - Pure CSS infinite scroll strip.
      I duplicate the content so the loop is seamless.
      ============================================================ -->
 <div class="marquee-strip" aria-hidden="true">
@@ -166,7 +166,7 @@ sort($languages);
 </div>
 
 <!-- ============================================================
-     MAIN CONTENT — Search, filter, sort, and CV grid
+     MAIN CONTENT - Search, filter, sort and CV grid
      ============================================================ -->
 <section class="section" id="cvs">
     <div class="container">
@@ -180,7 +180,7 @@ sort($languages);
             <?php echo $totalCVs; ?> CV<?php echo $totalCVs !== 1 ? 's' : ''; ?> from Aston University students and programmers.
         </p>
 
-        <!-- Search form — submits via GET so results are shareable -->
+        <!-- Search form - submits via GET so results are shareable -->
         <form method="GET" action="index.php" class="search-form">
             <input
                 type="text"
@@ -198,7 +198,7 @@ sort($languages);
             <?php endif; ?>
         </form>
 
-        <!-- Filter and Sort bar — I handle these with JavaScript so no page reload -->
+        <!-- Filter and Sort bar - I handle these with JavaScript so no page reload -->
         <div class="filter-bar">
             <select class="filter-select" id="langFilter">
                 <option value="">All Languages</option>
@@ -221,7 +221,7 @@ sort($languages);
             </span>
         </div>
 
-        <!-- CV cards grid — each card has data attributes for JS filtering -->
+        <!-- CV cards grid - each card has data attributes for JS filtering -->
         <div class="cv-grid" id="cvGrid">
             <?php if (empty($cvs) && !isset($dbError)): ?>
                 <div class="no-results">
@@ -295,10 +295,10 @@ sort($languages);
 </section>
 
 <!-- ============================================================
-     FOOTER — Real content with links and student info
+     FOOTER - Real content with links and student info
      ============================================================ -->
 <!-- ============================================================
-     CONTACT SECTION — Simple enquiry form for visitors
+     CONTACT SECTION - Simple enquiry form for visitors
      ============================================================ -->
 <section class="section" style="background: var(--bg-white); border-top: 1px solid var(--border-color);">
     <div class="container">
@@ -315,7 +315,7 @@ sort($languages);
             <!-- I include a CSRF token to protect against cross-site request forgery -->
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? bin2hex(random_bytes(32))); ?>">
             <!--
-                HONEYPOT FIELD — I hide this from real users with CSS.
+                HONEYPOT FIELD - I hide this from real users with CSS.
                 Bots fill in every field automatically, so if this has
                 a value the handler knows it is a bot and blocks it silently.
             -->
@@ -376,12 +376,12 @@ sort($languages);
 <!-- ============================================================
      JAVASCRIPT
      I handle three things here:
-     1. Preloader — fade out after page loads
-     2. Navbar scroll class — adds .scrolled when user scrolls down
-     3. Scroll reveal — animates cards in as they enter the viewport
-     4. Stats counters — animates numbers up from 0
-     5. Live filter — filters cards by language without page reload
-     6. Live sort — reorders cards without page reload
+     1. Preloader - fade out after page loads
+     2. Navbar scroll class - adds .scrolled when user scrolls down
+     3. Scroll reveal - animates cards in as they enter the viewport
+     4. Stats counters - animates numbers up from 0
+     5. Live filter - filters cards by language without page reload
+     6. Live sort - reorders cards without page reload
      ============================================================ -->
 <script>
 // ---- 1. PRELOADER ----
