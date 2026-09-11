@@ -38,6 +38,15 @@ PATCH - bug fixes, typo corrections, small updates
 
 ## [Unreleased]
 
+Planned or in progress - not yet in a release.
+
+- Unit and integration test suite
+- Pagination on the CV browse page
+
+---
+
+## [2.2.2] - 2026-09-11
+
 ### Updated
 
 - README rewritten to remove animated capsule-render and typing-svg banners, merge the duplicate
@@ -47,11 +56,6 @@ PATCH - bug fixes, typo corrections, small updates
   entries added for v2.2.0 and v2.2.1
 - Markdown alert callouts added to README.md, SECURITY.md and NOTICE.md for the genuine
   prerequisite, warning and licensing gotchas each file already documented
-
-Planned or in progress - not yet in a release.
-
-- Unit and integration test suite
-- Pagination on the CV browse page
 
 ---
 
