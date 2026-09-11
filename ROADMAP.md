@@ -2,7 +2,7 @@
 
 This roadmap tracks the development plan for AstonCV.
 
-**Current version: v2.2.1 - Security fix**
+**Current version: v2.2.2 - Docs and callout cleanup**
 
 ---
 
@@ -64,6 +64,11 @@ This roadmap tracks the development plan for AstonCV.
 ### v2.2.1 - Security fix
 
 - Scoped the php-lint workflow token to read-only contents access, closing a CodeQL missing workflow permissions alert
+
+### v2.2.2 - Docs and callout cleanup
+
+- README rewritten to remove animated banners, merge duplicate sections and reconcile the avatar upload status with this file
+- Markdown alert callouts added to README.md, SECURITY.md and NOTICE.md
 
 ---
 
