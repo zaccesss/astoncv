@@ -1,4 +1,4 @@
-name: PHP Lint
+name: Markdown Lint
 
 permissions:
   contents: read
@@ -10,20 +10,19 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  php-lint:
-    name: Check PHP syntax
+  markdownlint:
+    name: Lint markdown files
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v24.1.0
         with:
-          php-version: '8.2'
-
-      - name: Run syntax check on all PHP files
-        run: find . -name "*.php" -not -path "./vendor/*" | xargs php -l
+          globs: '**/*.md'
+          config: '.markdownlint.json'
