@@ -2,7 +2,7 @@
 
 This roadmap tracks the development plan for AstonCV.
 
-**Current version: v2.2.2 - Docs and callout cleanup**
+**Current version: v2.2.3 - Repo hygiene bundle**
 
 ---
 
@@ -69,6 +69,13 @@ This roadmap tracks the development plan for AstonCV.
 
 - README rewritten to remove animated banners, merge duplicate sections and reconcile the avatar upload status with this file
 - Markdown alert callouts added to README.md, SECURITY.md and NOTICE.md
+
+### v2.2.3 - Repo hygiene bundle
+
+- CODEOWNERS, SUPPORT.md, CODE_OF_CONDUCT.md and CONTRIBUTING.md added
+- `.markdownlint.json` and a markdown-lint CI workflow added, with a workflows README documenting both CI checks
+- `bug_report.md` converted to `bug_report.yml`, plus a new `feature_request.yml`
+- README rewritten with a Quick Navigation section and the raw student-hosting URL removed in favour of the custom domain link only
 
 ---
 
