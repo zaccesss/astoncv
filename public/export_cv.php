@@ -2,7 +2,7 @@
 /*
  * export_cv.php
  * CV PDF Export - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I generate a downloadable PDF of a single CV using mPDF.
  * I identify the CV by the id passed in the URL e.g. export_cv.php?id=1
@@ -11,7 +11,7 @@
  */
 
 require 'db.php';
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 session_start();
 
 // I check that an id was provided and is a valid number

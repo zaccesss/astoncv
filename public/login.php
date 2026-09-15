@@ -2,7 +2,7 @@
 /*
  * login.php
  * Login Page - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I allow registered users to log in to their account.
  * I use PHP sessions to remember who is logged in across pages.
@@ -270,7 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
             <h4>Project Info</h4>
             <ul>
                 <li><a href="https://github.com/zaccesss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
-                <li><a href="http://240191278.cs2410-web01pvm.aston.ac.uk" target="_blank" rel="noopener">Live Site</a></li>
+                <li><a href="http://astoncv.zacess.com" target="_blank" rel="noopener">Live Site</a></li>
                 <li><a href="https://www.aston.ac.uk" target="_blank" rel="noopener">Aston University</a></li>
             </ul>
         </div>

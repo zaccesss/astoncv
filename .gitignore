@@ -1,8 +1,8 @@
 # My database credentials - must never be committed to GitHub
-config.php
+public/config.php
 
 # Uploaded profile pictures - personal files, too large for GitHub
-uploads/
+public/uploads/
 
 # mPDF library - too large for GitHub, install via composer
 vendor/
