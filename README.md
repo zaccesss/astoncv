@@ -26,6 +26,7 @@ The UI uses Aston University purple throughout, with Space Grotesk and DM Sans f
 ---
 
 <a id="live-site"></a>
+
 ## Live Site
 
 The site is live at [astoncv.zacess.com](http://astoncv.zacess.com), which redirects to the university's internal student hosting server via Cloudflare.
@@ -33,6 +34,7 @@ The site is live at [astoncv.zacess.com](http://astoncv.zacess.com), which redir
 ---
 
 <a id="features"></a>
+
 ## Features
 
 ### Public
@@ -71,6 +73,7 @@ The site is live at [astoncv.zacess.com](http://astoncv.zacess.com), which redir
 ---
 
 <a id="security"></a>
+
 ## Security
 
 Security controls built into the project include:
@@ -92,6 +95,7 @@ Security controls built into the project include:
 ---
 
 <a id="tech-stack"></a>
+
 ## Tech Stack
 
 <div align="center">
@@ -120,6 +124,7 @@ Security controls built into the project include:
 ---
 
 <a id="file-structure"></a>
+
 ## File Structure
 
 | File | Purpose |
@@ -145,6 +150,7 @@ Security controls built into the project include:
 ---
 
 <a id="local-setup"></a>
+
 ## Local Setup
 
 1. Clone the repo into `C:\xampp\htdocs\astoncv`
@@ -162,6 +168,7 @@ Security controls built into the project include:
 ---
 
 <a id="contact-and-support"></a>
+
 ## Contact and Support
 
 > [!TIP]
