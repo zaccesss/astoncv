@@ -2,7 +2,7 @@
 /*
  * logout.php
  * Logout - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * Destroys the session to log the user out.
  * Redirects to the homepage after logging out.

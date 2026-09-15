@@ -2,7 +2,7 @@
 /*
  * register.php
  * Registration Page - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I allow new users to create an account and add their CV.
  * I validate all fields server-side before saving to the database.

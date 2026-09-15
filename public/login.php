@@ -2,7 +2,7 @@
 /*
  * login.php
  * Login Page - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I allow registered users to log in to their account.
  * I use PHP sessions to remember who is logged in across pages.

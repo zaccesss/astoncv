@@ -2,7 +2,7 @@
 /*
  * update.php
  * Update CV Page - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I allow logged-in users to update their CV details.
  * I allow password changes with strength enforcement.

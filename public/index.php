@@ -2,7 +2,7 @@
 /*
  * index.php
  * CV Browse and Search Page - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I display all CVs as cards in a responsive grid.
  * I support searching by name or programming language via GET.

@@ -2,7 +2,7 @@
 /*
  * cv.php
  * CV Detail Page - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I display the full details of a single CV identified by ?id= in the URL.
  * I increment the view count each time this page loads.

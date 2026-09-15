@@ -2,7 +2,7 @@
 /*
  * dashboard.php
  * Personal Dashboard - AstonCV
- * Student: Isaac Adjei
+ * Author: Isaac Adjei
  *
  * I show the logged-in user their CV preview and quick actions.
  * I fetch their full CV data from the database to display here.
