@@ -2,7 +2,7 @@
 /*
  * dashboard.php
  * Personal Dashboard - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I show the logged-in user their CV preview and quick actions.
  * I fetch their full CV data from the database to display here.
@@ -589,7 +589,7 @@ $profilePreview = !empty($cv['profile'])
             <h4>Project Info</h4>
             <ul>
                 <li><a href="https://github.com/zaccessss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
-                <li><a href="http://240191278.cs2410-web01pvm.aston.ac.uk" target="_blank" rel="noopener">Live Site</a></li>
+                <li><a href="http://astoncv.zacess.com" target="_blank" rel="noopener">Live Site</a></li>
                 <li><a href="https://www.aston.ac.uk" target="_blank" rel="noopener">Aston University</a></li>
             </ul>
         </div>

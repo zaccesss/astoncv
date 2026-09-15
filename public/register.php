@@ -2,7 +2,7 @@
 /*
  * register.php
  * Registration Page - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I allow new users to create an account and add their CV.
  * I validate all fields server-side before saving to the database.
@@ -420,7 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h4>Project Info</h4>
             <ul>
                 <li><a href="https://github.com/zaccessss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
-                <li><a href="http://240191278.cs2410-web01pvm.aston.ac.uk" target="_blank" rel="noopener">Live Site</a></li>
+                <li><a href="http://astoncv.zacess.com" target="_blank" rel="noopener">Live Site</a></li>
                 <li><a href="https://www.aston.ac.uk" target="_blank" rel="noopener">Aston University</a></li>
             </ul>
         </div>

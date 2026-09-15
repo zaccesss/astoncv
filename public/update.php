@@ -2,7 +2,7 @@
 /*
  * update.php
  * Update CV Page - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I allow logged-in users to update their CV details.
  * I allow password changes with strength enforcement.
@@ -726,7 +726,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
             <h4>Project Info</h4>
             <ul>
                 <li><a href="https://github.com/zaccessss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
-                <li><a href="http://240191278.cs2410-web01pvm.aston.ac.uk" target="_blank" rel="noopener">Live Site</a></li>
+                <li><a href="http://astoncv.zacess.com" target="_blank" rel="noopener">Live Site</a></li>
                 <li><a href="https://www.aston.ac.uk" target="_blank" rel="noopener">Aston University</a></li>
             </ul>
         </div>

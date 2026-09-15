@@ -2,7 +2,7 @@
 /*
  * db.php
  * Database Connection File - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * This file creates a connection to the MySQL database using PDO.
  * It is included at the top of every page that needs database access.
