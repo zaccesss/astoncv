@@ -26,6 +26,22 @@ PATCH - bug fixes, typo corrections, small updates
 
 ---
 
+## [2.2.3] - 2026-09-15
+
+### Added
+
+- CODEOWNERS, SUPPORT.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md
+- `.markdownlint.json` and a markdown-lint CI workflow, with a workflows README documenting both CI checks
+- `feature_request.yml` as a second YAML issue form alongside the converted bug report
+
+### Changed
+
+- README rewritten with a Quick Navigation section and tighter section headings and anchors. The raw student-hosting URL is replaced with the custom domain link only.
+- `bug_report.md` converted to `bug_report.yml`, matching the structured issue-form standard used across my other repositories
+- `php-lint.yml`'s checkout action pinned to an exact commit SHA, matching this repository's own security-conscious conventions
+
+---
+
 ## [2.2.1] - 2026-08-05
 
 ### Security
