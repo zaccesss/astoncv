@@ -2,7 +2,7 @@
 /*
  * contact_handler.php
  * Contact Form Handler - AstonCV
- * Student: Isaac Adjei (240191278)
+ * Author: Isaac Adjei
  *
  * I handle the enquiry form submission from index.php.
  * I validate all inputs before doing anything with them.

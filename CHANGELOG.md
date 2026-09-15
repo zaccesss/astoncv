@@ -33,12 +33,21 @@ PATCH - bug fixes, typo corrections, small updates
 - CODEOWNERS, SUPPORT.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md
 - `.markdownlint.json` and a markdown-lint CI workflow, with a workflows README documenting both CI checks
 - `feature_request.yml` as a second YAML issue form alongside the converted bug report
+- DOCUMENTATION.md, carrying the full feature list, security implementation detail and local setup steps out of the README
 
 ### Changed
 
-- README rewritten with a Quick Navigation section and tighter section headings and anchors. The raw student-hosting URL is replaced with the custom domain link only.
+- All page and asset files moved into a new `public/` folder as the actual web root, matching how the site is genuinely deployed. Repository meta files (README, CHANGELOG, composer.json) stay at the repository root.
+- `export_cv.php`'s `vendor/autoload.php` path updated for its new location one level under `vendor/`
+- README rewritten as a short overview with a Quick Navigation section and a Documentation Hub linking out to DOCUMENTATION.md, SECURITY.md, CONTRIBUTING.md, CHANGELOG.md and ROADMAP.md. File structure is now a tree rather than a table.
 - `bug_report.md` converted to `bug_report.yml`, matching the structured issue-form standard used across my other repositories
 - `php-lint.yml`'s checkout action pinned to an exact commit SHA, matching this repository's own security-conscious conventions
+- Author byline in every PHP and CSS file header simplified to name only
+- `config.example.php` had leftover documentation text accidentally pasted into the actual file, now removed
+
+### Fixed
+
+- The live site link in every page's footer now points at the custom domain link, matching the README
 
 ---
 
