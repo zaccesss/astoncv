@@ -2,7 +2,7 @@
 
 [![PHP Lint](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml/badge.svg)](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.2.3-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.2.4-blue.svg)](CHANGELOG.md)
 [![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](#live-site)
 
 AstonCV is a full-stack CV database website, built as a university portfolio project in plain PHP and MySQL. Anyone can browse and search student CVs publicly, register an account, manage their own CV once logged in and download any CV as a professionally formatted PDF.
