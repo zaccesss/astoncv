@@ -26,6 +26,12 @@ PATCH - bug fixes, typo corrections, small updates
 
 ---
 
+## [2.2.4] - 2026-09-17
+
+### Added
+
+- `.github/ISSUE_TEMPLATE/config.yml` disabling the blank issue option, pointing to the security policy and my contact channels instead
+
 ## [2.2.3] - 2026-09-15
 
 ### Added
