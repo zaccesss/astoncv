@@ -97,7 +97,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* I apply Space Grotesk to all heading tags */
+/* apply Space Grotesk to all heading tags */
 h1,
 h2,
 h3,
@@ -155,7 +155,7 @@ h6 {
   pointer-events: none;
 }
 
-/* I animate the spinner ring with a CSS keyframe */
+/* animate the spinner ring with a CSS keyframe */
 .preloader-spinner {
   width: 52px;
   height: 52px;
@@ -195,7 +195,7 @@ h6 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* I add a slight blur/shadow when the user scrolls down */
+/* add a slight blur/shadow when the user scrolls down */
 #main-header.scrolled {
   background-color: rgba(26, 10, 46, 0.97);
   box-shadow: var(--shadow-lg);
@@ -212,7 +212,7 @@ h6 {
   padding: 0.9rem 1rem;
 }
 
-/* I make the Aston logo white so it shows on the dark navbar */
+/* make the Aston logo white so it shows on the dark navbar */
 .logo {
   height: 42px;
   width: auto;
@@ -224,7 +224,7 @@ h6 {
   opacity: 0.85;
 }
 
-/* Nav links */
+/* nav links */
 nav ul {
   list-style: none;
   display: flex;
@@ -244,7 +244,7 @@ nav a {
   padding: 0.35rem 0;
 }
 
-/* I animate an underline in from the left on hover */
+/* animate an underline in from the left on hover */
 nav a::after {
   content: '';
   position: absolute;
@@ -299,7 +299,7 @@ nav a.active::after {
   margin-top: 0;
 }
 
-/* I add this class on index.php only - shows the campus photo */
+/* add this class on index.php only - shows the campus photo */
 .hero--image {
   background:
     linear-gradient(
@@ -315,12 +315,12 @@ nav a.active::after {
   justify-content: flex-end;
 }
 
-/* All other page heroes stay slim and solid */
+/* all other page heroes stay slim and solid */
 .hero:not(.hero--image) {
   padding: 4rem 0 3rem;
 }
 
-/* Subtle noise texture to make the hero feel editorial */
+/* subtle noise texture to make the hero feel editorial */
 .hero::before {
   content: '';
   position: absolute;
@@ -331,7 +331,7 @@ nav a.active::after {
   opacity: 0.5;
 }
 
-/* I fade and slide the hero content upward on load */
+/* fade and slide the hero content upward on load */
 .hero-content {
   position: relative;
   z-index: 1;
@@ -341,7 +341,7 @@ nav a.active::after {
   animation: heroFadeUp 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-/* On the image hero the text sits bottom-left */
+/* on the image hero the text sits bottom-left */
 .hero--image .hero-content {
   max-width: 1200px;
   width: 90%;
@@ -361,7 +361,7 @@ nav a.active::after {
   }
 }
 
-/* Hero typography */
+/* hero typography */
 .hero h1 {
   font-size: clamp(2.2rem, 5vw, 4rem);
   font-weight: 700;
@@ -372,7 +372,7 @@ nav a.active::after {
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* I use this span inside the h1 for a purple accent on key words */
+/* use this span inside the h1 for a purple accent on key words */
 .hero h1 .hero-highlight {
   color: var(--accent-bright);
 }
@@ -434,14 +434,14 @@ nav a.active::after {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* I animate two copies of the track - when the first set
+/* animate two copies of the track - when the first set
    scrolls fully off screen, the second takes its place */
 .marquee-track {
   display: inline-flex;
   animation: marqueeScroll 28s linear infinite;
 }
 
-/* I pause the marquee when the user hovers over it */
+/* pause the marquee when the user hovers over it */
 .marquee-strip:hover .marquee-track {
   animation-play-state: paused;
 }
@@ -459,7 +459,7 @@ nav a.active::after {
   text-transform: uppercase;
 }
 
-/* The small dot separator between marquee items */
+/* the small dot separator between marquee items */
 .marquee-item .marquee-dot {
   width: 5px;
   height: 5px;
@@ -468,7 +468,7 @@ nav a.active::after {
   flex-shrink: 0;
 }
 
-/* I move the track left by exactly 50% - because I duplicate
+/* move the track left by exactly 50% - because I duplicate
    the content, this creates a seamless infinite loop */
 @keyframes marqueeScroll {
   0% {
@@ -516,7 +516,7 @@ nav a.active::after {
   transform: translateY(0);
 }
 
-/* Outlined purple button - used on white backgrounds */
+/* outlined purple button - used on white backgrounds */
 .cta-button-secondary {
   background: transparent;
   color: var(--primary-color);
@@ -530,7 +530,7 @@ nav a.active::after {
   box-shadow: var(--shadow-md);
 }
 
-/* Solid purple button - used in forms and cards */
+/* solid purple button - used in forms and cards */
 .cta-button-primary {
   background: var(--primary-color);
   color: white;
@@ -556,7 +556,7 @@ nav a.active::after {
   letter-spacing: -0.02em;
 }
 
-/* I add a short purple underline bar below each heading */
+/* add a short purple underline bar below each heading */
 .section h2::after {
   content: '';
   position: absolute;
@@ -630,7 +630,7 @@ nav a.active::after {
   box-shadow: var(--shadow-md);
 }
 
-/* Filter and Sort dropdowns */
+/* filter and Sort dropdowns */
 .filter-bar {
   display: flex;
   gap: 0.75rem;
@@ -689,7 +689,7 @@ nav a.active::after {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  /* I start cards hidden for scroll reveal */
+  /* start cards hidden for scroll reveal */
   opacity: 1;
   transform: translateY(0);
 }
@@ -706,7 +706,7 @@ nav a.active::after {
   border-left-color: var(--primary-light);
 }
 
-/* Avatar + name row at the top of each card */
+/* avatar + name row at the top of each card */
 .cv-card-header {
   display: flex;
   align-items: center;
@@ -714,7 +714,7 @@ nav a.active::after {
   margin-bottom: 1.25rem;
 }
 
-/* I show the first letter of the name as the avatar initials */
+/* show the first letter of the name as the avatar initials */
 .cv-avatar {
   width: 52px;
   height: 52px;
@@ -785,7 +785,7 @@ nav a.active::after {
   justify-content: space-between;
 }
 
-/* I make the button inside cards compact and purple */
+/* make the button inside cards compact and purple */
 .cv-card .cta-button {
   margin-top: 0;
   padding: 0.55rem 1.1rem;
@@ -896,7 +896,7 @@ nav a.active::after {
   padding-bottom: 0;
 }
 
-/* I make section labels small and uppercase like a real CV */
+/* make section labels small and uppercase like a real CV */
 .cv-detail-section h2 {
   font-size: 0.72rem;
   text-transform: uppercase;
@@ -907,7 +907,7 @@ nav a.active::after {
   padding-bottom: 0;
 }
 
-/* I remove the default underline bar from these small labels */
+/* remove the default underline bar from these small labels */
 .cv-detail-section h2::after {
   display: none;
 }
@@ -1048,7 +1048,7 @@ nav a.active::after {
   line-height: 1.6;
 }
 
-/* Password field with show/hide toggle button */
+/* password field with show/hide toggle button */
 .password-wrapper {
   position: relative;
 }
@@ -1187,7 +1187,7 @@ nav a.active::after {
   text-align: center;
 }
 
-/* I show initials as the avatar on the dashboard */
+/* show initials as the avatar on the dashboard */
 .dashboard-avatar {
   width: 80px;
   height: 80px;
@@ -1254,7 +1254,7 @@ nav a.active::after {
   gap: 1.5rem;
 }
 
-/* I give dashboard content cards the same left border as CV cards */
+/* give dashboard content cards the same left border as CV cards */
 .dashboard-card {
   background: var(--bg-white);
   border-radius: 10px;
@@ -1818,7 +1818,7 @@ footer {
   border-top: 3px solid var(--primary-color);
 }
 
-/* I use a 3-column grid for the footer content */
+/* use a 3-column grid for the footer content */
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -1844,7 +1844,7 @@ footer {
   max-width: 280px;
 }
 
-/* I style the column headers as small uppercase labels */
+/* style the column headers as small uppercase labels */
 .footer-col h4 {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem;
@@ -2035,7 +2035,7 @@ blockquote {
   transform: translateY(0);
 }
 
-/* I stagger the delay so cards animate in one after another */
+/* stagger the delay so cards animate in one after another */
 .cv-card:nth-child(2) {
   transition-delay: 0.06s;
 }
@@ -2136,7 +2136,7 @@ blockquote {
     font-size: 1.75rem;
   }
 
-  /* I hide the campus photo panel on mobile to save space */
+  /* hide the campus photo panel on mobile to save space */
   .split-image {
     display: none;
   }
