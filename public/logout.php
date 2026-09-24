@@ -1,23 +1,23 @@
 <?php
 /*
  * logout.php
- * Logout - AstonCV
- * Author: Isaac Adjei
+ * logout - AstonCV
+ * author: Isaac Adjei
  *
- * Destroys the session to log the user out.
- * Redirects to the homepage after logging out.
+ * destroys the session to log the user out.
+ * redirects to the homepage after logging out.
  */
 
-// Starts the session so we can destroy it
+// starts the session so we can destroy it
 session_start();
 
-// Removes all session variables
+// removes all session variables
 session_unset();
 
-// Destroys the session completely
+// destroys the session completely
 session_destroy();
 
-// Redirects to the homepage
+// redirects to the homepage
 header('Location: index.php');
 exit;
 ?>

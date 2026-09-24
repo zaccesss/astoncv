@@ -1,19 +1,19 @@
 <?php
 /*
  * dashboard.php
- * Personal Dashboard - AstonCV
- * Author: Isaac Adjei
+ * personal Dashboard - AstonCV
+ * author: Isaac Adjei
  *
- * I show the logged-in user their CV preview and quick actions.
- * I fetch their full CV data from the database to display here.
- * I only allow access to logged-in users - redirect to login otherwise.
- * I wrap all database calls in try/catch for proper error handling.
+ * show the logged-in user their CV preview and quick actions.
+ * fetch their full CV data from the database to display here.
+ * only allow access to logged-in users - redirect to login otherwise.
+ * wrap all database calls in try/catch for proper error handling.
  */
 
 require 'db.php';
 session_start();
 
-// I redirect to login if the user is not logged in
+// redirect to login if the user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -22,30 +22,30 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 try {
-    // I fetch the full CV row for the logged-in user
+    // fetch the full CV row for the logged-in user
     $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
     $stmt->execute([$userId]);
     $cv = $stmt->fetch();
 
-    // I count how many CVs are in the database total
+    // count how many CVs are in the database total
     $totalCVs = (int) $pdo->query("SELECT COUNT(*) FROM cvs")->fetchColumn();
 
 } catch (PDOException $e) {
-    // I redirect home if the database call fails
+    // redirect home if the database call fails
     header('Location: index.php');
     exit;
 }
 
-// I get the first letter of the name for the avatar
+// get the first letter of the name for the avatar
 $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 
-// I split the skills string into an array for displaying as badges
+// split the skills string into an array for displaying as badges
 $skillsArray = [];
 if (!empty($cv['skills'])) {
     $skillsArray = array_filter(array_map('trim', explode(',', $cv['skills'])));
 }
 
-// I truncate the profile summary for the preview card
+// truncate the profile summary for the preview card
 $profilePreview = !empty($cv['profile'])
     ? (strlen($cv['profile']) > 200 ? substr($cv['profile'], 0, 200) . '...' : $cv['profile'])
     : 'No profile summary added yet.';
@@ -59,7 +59,7 @@ $profilePreview = !empty($cv['profile'])
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* I add page-specific styles for the dashboard layout */
+        /* add page-specific styles for the dashboard layout */
 
         .dash-layout {
             display: grid;
@@ -68,7 +68,7 @@ $profilePreview = !empty($cv['profile'])
             align-items: start;
         }
 
-        /* Sticky sidebar */
+        /* sticky sidebar */
         .dash-sidebar {
             position: sticky;
             top: 90px;
@@ -124,7 +124,7 @@ $profilePreview = !empty($cv['profile'])
             margin-bottom: 1.25rem;
         }
 
-        /* I style the sidebar nav links */
+        /* style the sidebar nav links */
         .dash-nav-link {
             display: flex;
             align-items: center;
@@ -155,7 +155,7 @@ $profilePreview = !empty($cv['profile'])
             color: var(--error-color);
         }
 
-        /* I style each main content card */
+        /* style each main content card */
         .dash-card {
             background: var(--bg-white);
             border-radius: 10px;
@@ -183,7 +183,7 @@ $profilePreview = !empty($cv['profile'])
             border-bottom: 1px solid var(--border-color);
         }
 
-        /* I lay out the stats row at the top of the dashboard */
+        /* lay out the stats row at the top of the dashboard */
         .dash-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -424,7 +424,7 @@ $profilePreview = !empty($cv['profile'])
             <!-- ---- MAIN CONTENT ---- -->
             <div>
 
-                <!-- Stats row -->
+                <!-- stats row -->
                 <div class="dash-stats">
                     <div class="dash-stat-card">
                         <div class="dash-stat-number"><?php echo (int)$cv['view_count']; ?></div>
@@ -464,7 +464,7 @@ $profilePreview = !empty($cv['profile'])
                         </div>
                     </div>
 
-                    <!-- Skills badges -->
+                    <!-- skills badges -->
                     <?php if (!empty($skillsArray)): ?>
                         <div class="skills-container" style="margin-top: 1.25rem;">
                             <?php foreach (array_slice($skillsArray, 0, 8) as $skill): ?>
@@ -492,7 +492,7 @@ $profilePreview = !empty($cv['profile'])
 
                 <!-- CV completeness card -->
                 <?php
-                // I check which sections are filled in to show a completeness score
+                // check which sections are filled in to show a completeness score
                 $sections = [
                     'Profile Summary' => !empty($cv['profile']),
                     'Education'       => !empty($cv['education']),
@@ -508,7 +508,7 @@ $profilePreview = !empty($cv['profile'])
                 <div class="dash-card">
                     <div class="dash-card-title">CV Completeness</div>
 
-                    <!-- Progress bar -->
+                    <!-- progress bar -->
                     <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <div style="flex: 1; height: 8px; background: var(--border-color);
                                     border-radius: 4px; overflow: hidden;">
@@ -522,7 +522,7 @@ $profilePreview = !empty($cv['profile'])
                         </span>
                     </div>
 
-                    <!-- Section checklist -->
+                    <!-- section checklist -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
                         <?php foreach ($sections as $label => $done): ?>
                             <div style="display: flex; align-items: center; gap: 0.5rem;
@@ -543,7 +543,7 @@ $profilePreview = !empty($cv['profile'])
                     <?php endif; ?>
                 </div>
 
-                <!-- Quick links card -->
+                <!-- quick links card -->
                 <div class="dash-card">
                     <div class="dash-card-title">Quick Actions</div>
                     <div class="dash-action-row">
@@ -600,7 +600,7 @@ $profilePreview = !empty($cv['profile'])
 </footer>
 
 <script>
-// I add the scrolled class to the navbar when the user scrolls
+// add the scrolled class to the navbar when the user scrolls
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
     header.classList.toggle('scrolled', window.scrollY > 30);

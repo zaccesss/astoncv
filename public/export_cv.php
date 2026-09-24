@@ -2,19 +2,19 @@
 /*
  * export_cv.php
  * CV PDF Export - AstonCV
- * Author: Isaac Adjei
+ * author: Isaac Adjei
  *
- * I generate a downloadable PDF of a single CV using mPDF.
- * I identify the CV by the id passed in the URL e.g. export_cv.php?id=1
- * Anyone can export any CV as a PDF - no login required.
- * I wrap database calls in try/catch for proper error handling.
+ * generate a downloadable PDF of a single CV using mPDF.
+ * identify the CV by the id passed in the URL e.g. export_cv.php?id=1
+ * anyone can export any CV as a PDF - no login required.
+ * wrap database calls in try/catch for proper error handling.
  */
 
 require 'db.php';
 require '../vendor/autoload.php';
 session_start();
 
-// I check that an id was provided and is a valid number
+// check that an id was provided and is a valid number
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
@@ -23,7 +23,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = (int) $_GET['id'];
 
 try {
-    // I fetch the CV using a prepared statement to prevent SQL injection
+    // fetch the CV using a prepared statement to prevent SQL injection
     $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
     $stmt->execute([$id]);
     $cv = $stmt->fetch();
@@ -32,30 +32,30 @@ try {
     exit;
 }
 
-// I redirect home if no CV was found with this ID
+// redirect home if no CV was found with this ID
 if (!$cv) {
     header('Location: index.php');
     exit;
 }
 
-// I use this helper to safely escape text for HTML output
-// This prevents XSS even inside the PDF
+// use this helper to safely escape text for HTML output
+// this prevents XSS even inside the PDF
 function e($text) {
     return htmlspecialchars($text ?? '', ENT_QUOTES, 'UTF-8');
 }
 
-// I build the skills as pipe-separated text for the PDF
+// build the skills as pipe-separated text for the PDF
 $skillsText = '';
 if (!empty($cv['skills'])) {
     $skillsArray = array_filter(array_map('trim', explode(',', $cv['skills'])));
     $skillsText  = implode(' | ', $skillsArray);
 }
 
-// I get the first letter of the name for the avatar area
+// get the first letter of the name for the avatar area
 $initial = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 
 // ================================================
-// I build the HTML that mPDF will convert to a PDF
+// build the HTML that mPDF will convert to a PDF
 // ================================================
 $html = '
 <html>
@@ -69,7 +69,7 @@ $html = '
         padding: 0;
     }
 
-    /* I use Aston University purple for the header - matches the website */
+    /* use Aston University purple for the header - matches the website */
     .header {
         background-color: #5c2d82;
         color: white;
@@ -102,14 +102,14 @@ $html = '
         color: rgba(255,255,255,0.7);
     }
 
-    /* I add a thin accent bar below the header */
+    /* add a thin accent bar below the header */
     .header-bar {
         background-color: #3a1a5c;
         height: 4px;
         margin-bottom: 20px;
     }
 
-    /* I style section headings to match the website CV detail page */
+    /* style section headings to match the website CV detail page */
     h2 {
         font-size: 8px;
         font-weight: bold;
@@ -134,7 +134,7 @@ $html = '
         color: #3d2a55;
     }
 
-    /* I style the footer line at the bottom of the PDF */
+    /* style the footer line at the bottom of the PDF */
     .footer {
         margin-top: 28px;
         border-top: 1px solid #e2d9f3;
@@ -155,7 +155,7 @@ $html = '
 </head>
 <body>
 
-<!-- I use Aston purple for the header to match the website -->
+<!-- use Aston purple for the header to match the website -->
 <div class="header">
     <h1>' . e($cv['name']) . '</h1>
     <p class="role">' . e($cv['keyprogramming']) . ' Developer</p>
@@ -206,10 +206,10 @@ $html = '
 ';
 
 // ================================================
-// I generate the PDF using mPDF
+// generate the PDF using mPDF
 // ================================================
 
-// I create a new mPDF instance with A4 page size and no top margin
+// create a new mPDF instance with A4 page size and no top margin
 $mpdf = new \Mpdf\Mpdf([
     'margin_top'    => 0,
     'margin_bottom' => 15,
@@ -217,12 +217,12 @@ $mpdf = new \Mpdf\Mpdf([
     'margin_right'  => 15,
 ]);
 
-// I write the HTML into the PDF
+// write the HTML into the PDF
 $mpdf->WriteHTML($html);
 
-// I create a clean filename e.g. "Samuel_Acquah_CV.pdf"
+// create a clean filename e.g. "Samuel_Acquah_CV.pdf"
 $filename = str_replace(' ', '_', $cv['name']) . '_CV.pdf';
 
-// I send the PDF to the browser as a forced download
+// send the PDF to the browser as a forced download
 // 'D' = download, 'I' = open inline
 $mpdf->Output($filename, 'D');

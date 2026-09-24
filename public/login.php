@@ -1,32 +1,32 @@
 <?php
 /*
  * login.php
- * Login Page - AstonCV
- * Author: Isaac Adjei
+ * login Page - AstonCV
+ * author: Isaac Adjei
  *
- * I allow registered users to log in to their account.
- * I use PHP sessions to remember who is logged in across pages.
- * I verify passwords against the hashed version stored in the database.
- * I use a CSRF token to prevent cross-site request forgery attacks.
- * I lock the account for 15 minutes after 5 failed login attempts.
- * I wrap database calls in try/catch for proper error handling.
+ * allow registered users to log in to their account.
+ * use PHP sessions to remember who is logged in across pages.
+ * verify passwords against the hashed version stored in the database.
+ * use a CSRF token to prevent cross-site request forgery attacks.
+ * lock the account for 15 minutes after 5 failed login attempts.
+ * wrap database calls in try/catch for proper error handling.
  */
 
 require 'db.php';
 session_start();
 
-// I redirect to dashboard if the user is already logged in
+// redirect to dashboard if the user is already logged in
 if (isset($_SESSION['user_id'])) {
     header('Location: dashboard.php');
     exit;
 }
 
-// I generate a CSRF token if one does not already exist
+// generate a CSRF token if one does not already exist
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-// I initialise the failed login counter if not already set
+// initialise the failed login counter if not already set
 if (!isset($_SESSION['login_attempts'])) {
     $_SESSION['login_attempts'] = 0;
 }
@@ -38,7 +38,7 @@ if (!isset($_SESSION['lockout_time'])) {
 $error     = '';
 $lockedOut = false;
 
-// I check if the account is currently locked out
+// check if the account is currently locked out
 if ($_SESSION['lockout_time'] !== null) {
     $secondsElapsed = time() - $_SESSION['lockout_time'];
     if ($secondsElapsed < 900) {
@@ -46,16 +46,16 @@ if ($_SESSION['lockout_time'] !== null) {
         $error       = "Too many failed attempts. Please try again in {$minutesLeft} minute(s).";
         $lockedOut   = true;
     } else {
-        // I reset counters once the 15-minute lockout expires
+        // reset counters once the 15-minute lockout expires
         $_SESSION['login_attempts'] = 0;
         $_SESSION['lockout_time']   = null;
     }
 }
 
-// I process the form only if it was submitted and the account is not locked
+// process the form only if it was submitted and the account is not locked
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
 
-    // I validate the CSRF token before doing anything else
+    // validate the CSRF token before doing anything else
     if (!isset($_POST['csrf_token']) ||
         !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         die("Invalid CSRF token. Please go back and try again.");
@@ -69,23 +69,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
     } else {
 
         try {
-            // I look up the user by email using a prepared statement
+            // look up the user by email using a prepared statement
             $stmt = $pdo->prepare("SELECT * FROM cvs WHERE email = ?");
             $stmt->execute([$email]);
             $user = $stmt->fetch();
 
-            // I verify the password against the stored hash
+            // verify the password against the stored hash
             if ($user && password_verify($password, $user['password'])) {
 
-                // I reset the failed attempt counter on success
+                // reset the failed attempt counter on success
                 $_SESSION['login_attempts'] = 0;
                 $_SESSION['lockout_time']   = null;
 
-                // I store the user's id and name in the session
+                // store the user's id and name in the session
                 $_SESSION['user_id']   = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
 
-                // I set a 30-day remember me cookie if the checkbox was ticked
+                // set a 30-day remember me cookie if the checkbox was ticked
                 if (isset($_POST['remember_me'])) {
                     $token = bin2hex(random_bytes(32));
                     $_SESSION['remember_token'] = $token;
@@ -93,12 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                               time() + 2592000, '/', '', false, true);
                 }
 
-                // I redirect to the dashboard after a successful login
+                // redirect to the dashboard after a successful login
                 header('Location: dashboard.php');
                 exit;
 
             } else {
-                // I increment the failed attempt counter
+                // increment the failed attempt counter
                 $_SESSION['login_attempts']++;
 
                 if ($_SESSION['login_attempts'] >= 5) {
@@ -152,34 +152,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
      ============================================================ -->
 <div class="split-layout">
 
-    <!-- Left: campus photo with text overlay -->
+    <!-- left: campus photo with text overlay -->
     <div class="split-image">
         <h2>Welcome back to AstonCV</h2>
         <p>Log in to update your CV, track views and manage your profile.</p>
     </div>
 
-    <!-- Right: login form -->
+    <!-- right: login form -->
     <div class="split-form">
         <div class="form-card">
 
             <h2>Log In</h2>
             <p class="form-subtitle">Enter your details below to access your account.</p>
 
-            <!-- I show an error if login failed or account is locked -->
+            <!-- show an error if login failed or account is locked -->
             <?php if ($error): ?>
                 <div class="alert-error">
                     <?php echo htmlspecialchars($error); ?>
                 </div>
             <?php endif; ?>
 
-            <!-- Login form posts back to this same page -->
+            <!-- login form posts back to this same page -->
             <form method="POST" action="login.php">
 
-                <!-- I include the CSRF token as a hidden field -->
+                <!-- include the CSRF token as a hidden field -->
                 <input type="hidden" name="csrf_token"
                        value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
-                <!-- Email -->
+                <!-- email -->
                 <div class="form-group">
                     <label for="email">Email Address <span class="required">*</span></label>
                     <input type="email"
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                            <?php echo $lockedOut ? 'disabled' : ''; ?>>
                 </div>
 
-                <!-- Password with show/hide toggle -->
+                <!-- password with show/hide toggle -->
                 <div class="form-group">
                     <label for="password">Password <span class="required">*</span></label>
                     <div class="password-wrapper">
@@ -201,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                                placeholder="Your password"
                                autocomplete="current-password"
                                <?php echo $lockedOut ? 'disabled' : ''; ?>>
-                        <!-- I use an SVG eye icon for the toggle button -->
+                        <!-- use an SVG eye icon for the toggle button -->
                         <button type="button"
                                 class="password-toggle"
                                 onclick="togglePassword('password', 'eyeIcon1')"
@@ -217,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                     </div>
                 </div>
 
-                <!-- Remember me -->
+                <!-- remember me -->
                 <div class="form-group" style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.75rem;">
                     <input type="checkbox"
                            id="remember_me"
@@ -228,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
                     </label>
                 </div>
 
-                <!-- Submit - greyed out if account is locked -->
+                <!-- submit - greyed out if account is locked -->
                 <button type="submit"
                         class="submit-button"
                         <?php echo $lockedOut ? 'disabled' : ''; ?>>
@@ -281,20 +281,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$lockedOut) {
 </footer>
 
 <script>
-// I add the scrolled class to the navbar when the user scrolls
+// add the scrolled class to the navbar when the user scrolls
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
     header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-// I toggle the password field between hidden and visible
+// toggle the password field between hidden and visible
 function togglePassword(fieldId, iconId) {
     const field = document.getElementById(fieldId);
     const icon  = document.getElementById(iconId);
 
     if (field.type === 'password') {
         field.type = 'text';
-        // I swap the eye icon to the crossed-out version
+        // swap the eye icon to the crossed-out version
         icon.innerHTML = `
             <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8
                      a18.45 18.45 0 0 1 5.06-5.94"/>
@@ -303,7 +303,7 @@ function togglePassword(fieldId, iconId) {
             <line x1="1" y1="1" x2="23" y2="23"/>`;
     } else {
         field.type = 'password';
-        // I swap back to the open eye icon
+        // swap back to the open eye icon
         icon.innerHTML = `
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
             <circle cx="12" cy="12" r="3"/>`;

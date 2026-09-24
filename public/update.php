@@ -1,27 +1,27 @@
 <?php
 /*
  * update.php
- * Update CV Page - AstonCV
- * Author: Isaac Adjei
+ * update CV Page - AstonCV
+ * author: Isaac Adjei
  *
- * I allow logged-in users to update their CV details.
- * I allow password changes with strength enforcement.
- * I allow profile picture uploads with file type and size validation.
- * I only allow access to logged-in users - redirect to login otherwise.
- * I use a CSRF token to prevent cross-site request forgery.
- * I wrap all database calls in try/catch for proper error handling.
+ * allow logged-in users to update their CV details.
+ * allow password changes with strength enforcement.
+ * allow profile picture uploads with file type and size validation.
+ * only allow access to logged-in users - redirect to login otherwise.
+ * use a CSRF token to prevent cross-site request forgery.
+ * wrap all database calls in try/catch for proper error handling.
  */
 
 require 'db.php';
 session_start();
 
-// I redirect to login if the user is not logged in
+// redirect to login if the user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// I generate a CSRF token if one does not already exist
+// generate a CSRF token if one does not already exist
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -34,7 +34,7 @@ $passwordSuccess = '';
 $uploadError     = '';
 $uploadSuccess   = '';
 
-// I fetch the current CV data for this user
+// fetch the current CV data for this user
 try {
     $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
     $stmt->execute([$userId]);
@@ -44,10 +44,10 @@ try {
     exit;
 }
 
-// I process whichever form was submitted
+// process whichever form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
 
-    // I validate the CSRF token before processing anything
+    // validate the CSRF token before processing anything
     if (!isset($_POST['csrf_token']) ||
         !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         die("Invalid CSRF token. Please go back and try again.");
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
                 $_SESSION['user_name'] = $name;
                 $success = "Your CV has been updated successfully!";
 
-                // I re-fetch to show the updated values
+                // re-fetch to show the updated values
                 $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
                 $stmt->execute([$userId]);
                 $cv = $stmt->fetch();
@@ -109,16 +109,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
             $fileTmp = $file['tmp_name'];
             $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-            // I only allow safe image formats
+            // only allow safe image formats
             $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
             if (!in_array($fileExt, $allowed)) {
                 $uploadError = "Only JPG, PNG, GIF and WEBP images are allowed.";
             } elseif ($file['size'] > 2097152) {
-                // I limit file size to 2MB
+                // limit file size to 2MB
                 $uploadError = "File size must be under 2MB.";
             } else {
-                // I create a unique filename to avoid conflicts
+                // create a unique filename to avoid conflicts
                 $newFileName = 'profile_' . $userId . '_' . time() . '.' . $fileExt;
                 $uploadDir   = 'uploads/';
 
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
 
                 if (move_uploaded_file($fileTmp, $uploadDir . $newFileName)) {
                     try {
-                        // I delete the old profile picture to keep the server tidy
+                        // delete the old profile picture to keep the server tidy
                         if (!empty($cv['profile_picture']) &&
                             file_exists($uploadDir . $cv['profile_picture'])) {
                             unlink($uploadDir . $cv['profile_picture']);
@@ -195,7 +195,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_type'])) {
     }
 }
 
-// I get the first letter of the name for the avatar
+// get the first letter of the name for the avatar
 $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 ?>
 <!DOCTYPE html>
@@ -207,7 +207,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* I lay out the update page as a two-column grid like the dashboard */
+        /* lay out the update page as a two-column grid like the dashboard */
         .update-layout {
             display: grid;
             grid-template-columns: 260px 1fr;
@@ -215,7 +215,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
             align-items: start;
         }
 
-        /* Sticky sidebar with user info */
+        /* sticky sidebar with user info */
         .update-sidebar {
             position: sticky;
             top: 90px;
@@ -291,7 +291,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
             font-weight: 600;
         }
 
-        /* I style each form section as a card */
+        /* style each form section as a card */
         .update-section {
             background: var(--bg-white);
             border-radius: 10px;
@@ -313,7 +313,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
             letter-spacing: -0.01em;
         }
 
-        /* Password strength bar */
+        /* password strength bar */
         .password-strength {
             height: 4px;
             background: var(--border-color);
@@ -465,7 +465,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                         <div class="alert-error"><?php echo htmlspecialchars($uploadError); ?></div>
                     <?php endif; ?>
 
-                    <!-- Current picture preview -->
+                    <!-- current picture preview -->
                     <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
                         <div style="width: 72px; height: 72px; border-radius: 50%;
                                     background: var(--primary-faint); border: 3px solid var(--border-color);
@@ -537,7 +537,7 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
                                    value="<?php echo htmlspecialchars($cv['name']); ?>">
                         </div>
 
-                        <!-- Email is read-only - cannot be changed after registration -->
+                        <!-- email is read-only - cannot be changed after registration -->
                         <div class="form-group">
                             <label for="email">Email Address</label>
                             <input type="email" id="email"
@@ -737,13 +737,13 @@ $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 </footer>
 
 <script>
-// I add scrolled class to navbar on scroll
+// add scrolled class to navbar on scroll
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
     header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-// I toggle password field visibility
+// toggle password field visibility
 function togglePassword(fieldId, iconId) {
     const field = document.getElementById(fieldId);
     const icon  = document.getElementById(iconId);
@@ -763,7 +763,7 @@ function togglePassword(fieldId, iconId) {
     }
 }
 
-// I check password strength on every keystroke
+// check password strength on every keystroke
 function checkPasswordStrength(value) {
     const hasLength  = value.length >= 8;
     const hasUpper   = /[A-Z]/.test(value);
@@ -792,7 +792,7 @@ function checkPasswordStrength(value) {
     checkPasswordMatch();
 }
 
-// I show a live tick or cross below the confirm password field
+// show a live tick or cross below the confirm password field
 function checkPasswordMatch() {
     const newPass     = document.getElementById('new_password').value;
     const confirmPass = document.getElementById('confirm_password').value;
@@ -807,7 +807,7 @@ function checkPasswordMatch() {
     }
 }
 
-// I update a single password rule item with a tick or cross
+// update a single password rule item with a tick or cross
 function updateRule(id, passed) {
     const el   = document.getElementById(id);
     const text = el.textContent.replace(/^[✓✗] /, '');

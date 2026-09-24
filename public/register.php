@@ -1,27 +1,27 @@
 <?php
 /*
  * register.php
- * Registration Page - AstonCV
- * Author: Isaac Adjei
+ * registration Page - AstonCV
+ * author: Isaac Adjei
  *
- * I allow new users to create an account and add their CV.
- * I validate all fields server-side before saving to the database.
- * I hash passwords using bcrypt - never stored as plain text.
- * I use a CSRF token to prevent cross-site request forgery.
- * I enforce password strength: uppercase, number, special character.
- * I wrap all database calls in try/catch for proper error handling.
+ * allow new users to create an account and add their CV.
+ * validate all fields server-side before saving to the database.
+ * hash passwords using bcrypt - never stored as plain text.
+ * use a CSRF token to prevent cross-site request forgery.
+ * enforce password strength: uppercase, number, special character.
+ * wrap all database calls in try/catch for proper error handling.
  */
 
 require 'db.php';
 session_start();
 
-// I redirect to dashboard if already logged in
+// redirect to dashboard if already logged in
 if (isset($_SESSION['user_id'])) {
     header('Location: dashboard.php');
     exit;
 }
 
-// I generate a CSRF token if one does not already exist
+// generate a CSRF token if one does not already exist
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -29,7 +29,7 @@ if (empty($_SESSION['csrf_token'])) {
 $errors  = [];
 $success = '';
 
-// I preserve submitted values so the form refills on error
+// preserve submitted values so the form refills on error
 $old = [
     'name'            => '',
     'email'           => '',
@@ -43,13 +43,13 @@ $old = [
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // I validate the CSRF token before processing anything
+    // validate the CSRF token before processing anything
     if (!isset($_POST['csrf_token']) ||
         !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         die("Invalid CSRF token. Please go back and try again.");
     }
 
-    // I retrieve and trim all submitted fields
+    // retrieve and trim all submitted fields
     $name            = trim($_POST['name']            ?? '');
     $email           = trim($_POST['email']           ?? '');
     $password        = trim($_POST['password']        ?? '');
@@ -60,11 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $work_experience = trim($_POST['work_experience'] ?? '');
     $URLlinks        = trim($_POST['URLlinks']        ?? '');
 
-    // I keep old values so the form refills if there are errors
+    // keep old values so the form refills if there are errors
     $old = compact('name', 'email', 'keyprogramming', 'skills',
                    'profile', 'education', 'work_experience', 'URLlinks');
 
-    // I validate each required field
+    // validate each required field
     if (empty($name))           $errors[] = "Name is required.";
     if (empty($email))          $errors[] = "Email is required.";
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($profile))        $errors[] = "Profile summary is required.";
     if (empty($education))      $errors[] = "Education is required.";
 
-    // I enforce password strength requirements
+    // enforce password strength requirements
     if (empty($password)) {
         $errors[] = "Password is required.";
     } elseif (strlen($password) < 8) {
@@ -86,20 +86,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Password must contain at least one special character (e.g. ! @ # $).";
     }
 
-    // I only save to the database if there are no validation errors
+    // only save to the database if there are no validation errors
     if (empty($errors)) {
         try {
-            // I check if this email is already registered
+            // check if this email is already registered
             $stmt = $pdo->prepare("SELECT id FROM cvs WHERE email = ?");
             $stmt->execute([$email]);
 
             if ($stmt->fetch()) {
                 $errors[] = "An account with that email already exists.";
             } else {
-                // I hash the password before storing - never plain text
+                // hash the password before storing - never plain text
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // I insert the new user into the database
+                // insert the new user into the database
                 $stmt = $pdo->prepare(
                     "INSERT INTO cvs
                      (name, email, password, keyprogramming, skills, profile,
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
 
                 $success = "Account created! You can now log in.";
-                // I clear the old values after a successful registration
+                // clear the old values after a successful registration
                 $old = array_map(fn($v) => '', $old);
             }
 
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* I add password strength bar styles specific to this page */
+        /* add password strength bar styles specific to this page */
         .password-strength {
             height: 4px;
             background: var(--border-color);
@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: block;
         }
 
-        /* I style the password rule checklist */
+        /* style the password rule checklist */
         .password-rules {
             list-style: none;
             padding: 0;
@@ -170,14 +170,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transition: color 0.2s ease;
         }
 
-        /* I make the register split image use the library photo */
+        /* make the register split image use the library photo */
         .split-image--register {
             background:
                 linear-gradient(160deg, rgba(26,10,46,0.72) 0%, rgba(92,45,130,0.62) 100%),
                 url('images/campus-library.jpg') center / cover no-repeat;
         }
 
-        /* I add a section label style for the form groups */
+        /* add a section label style for the form groups */
         .form-section-label {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.72rem;
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: block;
         }
 
-        /* I make the register form card wider since there are many fields */
+        /* make the register form card wider since there are many fields */
         .register-form-area {
             width: 100%;
             max-width: 560px;
@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             overflow-y: auto;
         }
 
-        /* I override split-form padding for the register page */
+        /* override split-form padding for the register page */
         .split-form--register {
             padding: 2rem 1.5rem;
             align-items: flex-start;
@@ -233,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      ============================================================ -->
 <div class="split-layout">
 
-    <!-- Left: campus library photo with overlay text -->
+    <!-- left: campus library photo with overlay text -->
     <div class="split-image split-image--register">
         <h2>Join AstonCV</h2>
         <p>
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     </div>
 
-    <!-- Right: registration form -->
+    <!-- right: registration form -->
     <div class="split-form split-form--register">
         <div class="register-form-area">
 
@@ -253,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Fill in your details to add your CV to AstonCV.
             </p>
 
-            <!-- Success message -->
+            <!-- success message -->
             <?php if ($success): ?>
                 <div class="alert-success">
                     <?php echo htmlspecialchars($success); ?>
@@ -261,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif; ?>
 
-            <!-- Error messages -->
+            <!-- error messages -->
             <?php if (!empty($errors)): ?>
                 <div class="alert-error">
                     <ul>
@@ -274,7 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <form method="POST" action="register.php">
 
-                <!-- I include the CSRF token as a hidden field -->
+                <!-- include the CSRF token as a hidden field -->
                 <input type="hidden" name="csrf_token"
                        value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
@@ -317,12 +317,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </svg>
                         </button>
                     </div>
-                    <!-- Password strength bar -->
+                    <!-- password strength bar -->
                     <div class="password-strength">
                         <div class="strength-fill" id="strengthFill"></div>
                     </div>
                     <span class="strength-text" id="strengthText"></span>
-                    <!-- Password requirements checklist -->
+                    <!-- password requirements checklist -->
                     <ul class="password-rules">
                         <li id="rule-length">At least 8 characters</li>
                         <li id="rule-upper">At least one uppercase letter</li>
@@ -431,13 +431,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </footer>
 
 <script>
-// I add the scrolled class to the navbar when the user scrolls
+// add the scrolled class to the navbar when the user scrolls
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
     header.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-// I toggle the password field between hidden and visible
+// toggle the password field between hidden and visible
 function togglePassword(fieldId, iconId) {
     const field = document.getElementById(fieldId);
     const icon  = document.getElementById(iconId);
@@ -457,7 +457,7 @@ function togglePassword(fieldId, iconId) {
     }
 }
 
-// I run this every time the user types in the password field
+// run this every time the user types in the password field
 function checkPasswordStrength(value) {
     const hasLength  = value.length >= 8;
     const hasUpper   = /[A-Z]/.test(value);
@@ -487,7 +487,7 @@ function checkPasswordStrength(value) {
     text.style.color      = levels[score].color;
 }
 
-// I update a single rule item to show a tick or cross
+// update a single rule item to show a tick or cross
 function updateRule(id, passed) {
     const el   = document.getElementById(id);
     const text = el.textContent.replace(/^[✓✗] /, '');

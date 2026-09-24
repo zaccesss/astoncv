@@ -2,19 +2,19 @@
 /*
  * cv.php
  * CV Detail Page - AstonCV
- * Author: Isaac Adjei
+ * author: Isaac Adjei
  *
- * I display the full details of a single CV identified by ?id= in the URL.
- * I increment the view count each time this page loads.
- * I sanitise all output with htmlspecialchars to prevent XSS.
- * I wrap all database calls in try/catch for proper error handling.
- * I only show the Edit button if the logged-in user owns this CV.
+ * display the full details of a single CV identified by ?id= in the URL.
+ * increment the view count each time this page loads.
+ * sanitise all output with htmlspecialchars to prevent XSS.
+ * wrap all database calls in try/catch for proper error handling.
+ * only show the Edit button if the logged-in user owns this CV.
  */
 
 require 'db.php';
 session_start();
 
-// I check that an ID was actually passed in the URL
+// check that an ID was actually passed in the URL
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header('Location: index.php');
     exit;
@@ -23,34 +23,34 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $id = (int) $_GET['id'];
 
 try {
-    // I fetch the full CV row for this ID using a prepared statement
+    // fetch the full CV row for this ID using a prepared statement
     $stmt = $pdo->prepare("SELECT * FROM cvs WHERE id = ?");
     $stmt->execute([$id]);
     $cv = $stmt->fetch();
 
-    // I redirect home if no CV exists with this ID
+    // redirect home if no CV exists with this ID
     if (!$cv) {
         header('Location: index.php');
         exit;
     }
 
-    // I increment the view count by 1 each time someone views this page
+    // increment the view count by 1 each time someone views this page
     $pdo->prepare("UPDATE cvs SET view_count = view_count + 1 WHERE id = ?")
         ->execute([$id]);
 
 } catch (PDOException $e) {
-    // I redirect home if anything goes wrong with the database
+    // redirect home if anything goes wrong with the database
     header('Location: index.php');
     exit;
 }
 
-// I get the first letter of the name for the avatar initials
+// get the first letter of the name for the avatar initials
 $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
 
-// I check if the logged-in user is the owner of this CV
+// check if the logged-in user is the owner of this CV
 $isOwner = isset($_SESSION['user_id']) && (int)$_SESSION['user_id'] === (int)$cv['id'];
 
-// I split the skills string into an array of individual skill badges
+// split the skills string into an array of individual skill badges
 $skillsArray = [];
 if (!empty($cv['skills'])) {
     $skillsArray = array_filter(array_map('trim', explode(',', $cv['skills'])));
@@ -66,11 +66,11 @@ if (!empty($cv['skills'])) {
     <link rel="stylesheet" href="style.css">
     <style>
         /*
-         * I add page-specific styles here rather than cluttering style.css.
-         * These only apply to the CV detail page.
+         * add page-specific styles here rather than cluttering style.css.
+         * these only apply to the CV detail page.
          */
 
-        /* I use a two-column layout: document on left, sidebar on right */
+        /* use a two-column layout: document on left, sidebar on right */
         .cv-page-layout {
             display: grid;
             grid-template-columns: 1fr 320px;
@@ -80,7 +80,7 @@ if (!empty($cv['skills'])) {
             align-items: start;
         }
 
-        /* The main CV document card */
+        /* the main CV document card */
         .cv-doc {
             background: var(--bg-white);
             border-radius: 12px;
@@ -89,7 +89,7 @@ if (!empty($cv['skills'])) {
             overflow: hidden;
         }
 
-        /* Purple header strip at the top of the document */
+        /* purple header strip at the top of the document */
         .cv-doc-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
             padding: 2.5rem;
@@ -99,7 +99,7 @@ if (!empty($cv['skills'])) {
             color: white;
         }
 
-        /* Large avatar in the document header */
+        /* large avatar in the document header */
         .cv-doc-avatar {
             width: 80px;
             height: 80px;
@@ -142,12 +142,12 @@ if (!empty($cv['skills'])) {
             margin-bottom: 0.25rem;
         }
 
-        /* Body of the CV document */
+        /* body of the CV document */
         .cv-doc-body {
             padding: 2.5rem;
         }
 
-        /* Each section inside the CV */
+        /* each section inside the CV */
         .cv-section {
             margin-bottom: 2rem;
             padding-bottom: 2rem;
@@ -160,7 +160,7 @@ if (!empty($cv['skills'])) {
             padding-bottom: 0;
         }
 
-        /* Small uppercase label like a real CV */
+        /* small uppercase label like a real CV */
         .cv-section-label {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.7rem;
@@ -174,7 +174,7 @@ if (!empty($cv['skills'])) {
             gap: 0.5rem;
         }
 
-        /* I draw a thin line after the label to fill the width */
+        /* draw a thin line after the label to fill the width */
         .cv-section-label::after {
             content: '';
             flex: 1;
@@ -188,7 +188,7 @@ if (!empty($cv['skills'])) {
             font-size: 0.93rem;
         }
 
-        /* Sidebar card */
+        /* sidebar card */
         .cv-sidebar {
             display: flex;
             flex-direction: column;
@@ -234,7 +234,7 @@ if (!empty($cv['skills'])) {
             text-decoration: underline;
         }
 
-        /* View count badge in sidebar */
+        /* view count badge in sidebar */
         .view-badge {
             display: inline-flex;
             align-items: center;
@@ -248,7 +248,7 @@ if (!empty($cv['skills'])) {
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* I make the print version clean and readable */
+        /* make the print version clean and readable */
         @media print {
             .cv-sidebar,
             #main-header,
@@ -266,7 +266,7 @@ if (!empty($cv['skills'])) {
             .container { padding: 0 !important; width: 100% !important; max-width: 100% !important; }
         }
 
-        /* Stack to single column on mobile */
+        /* stack to single column on mobile */
         @media (max-width: 768px) {
             .cv-page-layout {
                 grid-template-columns: 1fr;
@@ -339,15 +339,15 @@ if (!empty($cv['skills'])) {
                  ================================================ -->
             <div class="cv-doc">
 
-                <!-- Purple header with avatar and name -->
+                <!-- purple header with avatar and name -->
                 <div class="cv-doc-header">
                     <div class="cv-doc-avatar">
                         <?php if (!empty($cv['profile_picture'])): ?>
-                            <!-- I show the uploaded profile photo -->
+                            <!-- show the uploaded profile photo -->
                             <img src="uploads/<?php echo htmlspecialchars($cv['profile_picture']); ?>"
                                  alt="<?php echo htmlspecialchars($cv['name']); ?>">
                         <?php else: ?>
-                            <!-- I show the first letter as initials -->
+                            <!-- show the first letter as initials -->
                             <?php echo $initials; ?>
                         <?php endif; ?>
                     </div>
@@ -361,7 +361,7 @@ if (!empty($cv['skills'])) {
                 <!-- CV body sections -->
                 <div class="cv-doc-body">
 
-                    <!-- Profile Summary -->
+                    <!-- profile Summary -->
                     <?php if (!empty($cv['profile'])): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Profile Summary</div>
@@ -369,7 +369,7 @@ if (!empty($cv['skills'])) {
                     </div>
                     <?php endif; ?>
 
-                    <!-- Education -->
+                    <!-- education -->
                     <?php if (!empty($cv['education'])): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Education</div>
@@ -377,7 +377,7 @@ if (!empty($cv['skills'])) {
                     </div>
                     <?php endif; ?>
 
-                    <!-- Work Experience -->
+                    <!-- work Experience -->
                     <?php if (!empty($cv['work_experience'])): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Work Experience</div>
@@ -385,7 +385,7 @@ if (!empty($cv['skills'])) {
                     </div>
                     <?php endif; ?>
 
-                    <!-- Skills -->
+                    <!-- skills -->
                     <?php if (!empty($skillsArray)): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Skills & Technologies</div>
@@ -399,18 +399,18 @@ if (!empty($cv['skills'])) {
                     </div>
                     <?php endif; ?>
 
-                    <!-- Links - I split by | to support multiple URLs -->
+                    <!-- links - I split by | to support multiple URLs -->
                     <?php if (!empty($cv['URLlinks'])): ?>
                     <div class="cv-section">
                         <div class="cv-section-label">Links</div>
                         <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem;">
                             <?php
-                            // I split the links field by | to get individual URLs
+                            // split the links field by | to get individual URLs
                             $links = array_filter(array_map('trim', explode('|', $cv['URLlinks'])));
                             foreach ($links as $link):
-                                // I make sure the link starts with http so it works as an href
+                                // make sure the link starts with http so it works as an href
                                 $href = (strpos($link, 'http') === 0) ? $link : 'https://' . $link;
-                                // I detect the link type to show a helpful label
+                                // detect the link type to show a helpful label
                                 if (strpos($href, 'linkedin') !== false) {
                                     $label = 'LinkedIn';
                                 } elseif (strpos($href, 'github') !== false) {
@@ -440,7 +440,7 @@ if (!empty($cv['skills'])) {
                  ================================================ -->
             <div class="cv-sidebar">
 
-                <!-- View count -->
+                <!-- view count -->
                 <div class="cv-sidebar-card">
                     <h3>Engagement</h3>
                     <span class="view-badge">
@@ -449,7 +449,7 @@ if (!empty($cv['skills'])) {
                     </span>
                 </div>
 
-                <!-- Key language -->
+                <!-- key language -->
                 <div class="cv-sidebar-card">
                     <h3>Key Language</h3>
                     <span class="skill-badge" style="font-size: 0.9rem; padding: 0.4rem 1rem;">
@@ -457,7 +457,7 @@ if (!empty($cv['skills'])) {
                     </span>
                 </div>
 
-                <!-- Contact -->
+                <!-- contact -->
                 <div class="cv-sidebar-card">
                     <h3>Contact</h3>
                     <p>
@@ -481,7 +481,7 @@ if (!empty($cv['skills'])) {
                         </a>
 
                         <?php if ($isOwner): ?>
-                            <!-- I only show Edit to the CV owner -->
+                            <!-- only show Edit to the CV owner -->
                             <a href="update.php" class="cta-button-primary"
                                style="text-decoration: none; display: inline-flex; align-items: center;
                                       justify-content: center; padding: 0.7rem 1rem; font-size: 0.88rem;
@@ -492,7 +492,7 @@ if (!empty($cv['skills'])) {
                             </a>
                         <?php endif; ?>
 
-                        <!-- Download CV as PDF using mPDF export -->
+                        <!-- download CV as PDF using mPDF export -->
                         <a href="export_cv.php?id=<?php echo $id; ?>"
                            style="text-decoration: none; display: inline-flex; align-items: center;
                                   justify-content: center; gap: 0.4rem; padding: 0.7rem 1rem;
@@ -505,7 +505,7 @@ if (!empty($cv['skills'])) {
                             &#11015; Download PDF
                         </a>
 
-                        <!-- Print button - triggers browser print dialog -->
+                        <!-- print button - triggers browser print dialog -->
                         <button onclick="window.print()"
                                 style="padding: 0.7rem 1rem; font-size: 0.88rem;
                                        border-radius: 6px; font-family: 'Space Grotesk', sans-serif;
@@ -563,7 +563,7 @@ if (!empty($cv['skills'])) {
 </footer>
 
 <script>
-// I add the scrolled class to the navbar when the user scrolls down
+// add the scrolled class to the navbar when the user scrolls down
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
     header.classList.toggle('scrolled', window.scrollY > 30);
