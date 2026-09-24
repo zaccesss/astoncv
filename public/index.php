@@ -1,29 +1,21 @@
 <?php
 /*
- * index.php
- * CV Browse and Search Page - AstonCV
- * Author: Isaac Adjei
- *
- * I display all CVs as cards in a responsive grid.
- * I support searching by name or programming language via GET.
- * I fetch the total CV count for the stats bar on the hero.
- * I sanitise all output with htmlspecialchars to prevent XSS.
- * I wrap the database call in try/catch for proper error handling.
+ * browse and search page: cv cards in a grid, search by name or language.
  */
 
 require 'db.php';
 session_start();
 
-// I get the search term from the URL if one was submitted
+// get the search term from the URL if one was submitted
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-// I use try/catch to handle any database errors gracefully
+// use try/catch to handle any database errors gracefully
 try {
-    // I fetch total CV count for the stats bar - always the full count
+    // fetch total CV count for the stats bar - always the full count
     $countStmt = $pdo->query("SELECT COUNT(*) FROM cvs");
     $totalCVs  = (int) $countStmt->fetchColumn();
 
-    // I build the main query depending on whether a search term exists
+    // build the main query depending on whether a search term exists
     if ($search !== '') {
         $stmt = $pdo->prepare(
             "SELECT id, name, email, keyprogramming, profile_picture, view_count
@@ -44,13 +36,13 @@ try {
     $cvs = $stmt->fetchAll();
 
 } catch (PDOException $e) {
-    // I show a friendly error rather than crashing the page
+    // show a friendly error rather than crashing the page
     $cvs      = [];
     $totalCVs = 0;
     $dbError  = "Database error - please try again later.";
 }
 
-// I collect unique programming languages for the live filter dropdown
+// collect unique programming languages for the live filter dropdown
 $languages = array_unique(array_column($cvs, 'keyprogramming'));
 sort($languages);
 ?>
@@ -124,7 +116,7 @@ sort($languages);
             <?php endif; ?>
         </div>
 
-        <!-- Stats bar - animated counters showing live numbers -->
+        <!-- stats bar - animated counters showing live numbers -->
         <div class="stats-bar">
             <div class="stat-item">
                 <span class="stat-number" data-target="<?php echo $totalCVs; ?>">0</span>
@@ -144,7 +136,7 @@ sort($languages);
      ============================================================ -->
 <div class="marquee-strip" aria-hidden="true">
     <div class="marquee-track">
-        <!-- I repeat the items twice so the animation loops seamlessly -->
+        <!-- repeat the items twice so the animation loops seamlessly -->
         <span class="marquee-item"><span class="marquee-dot"></span>Aston University</span>
         <span class="marquee-item"><span class="marquee-dot"></span>CV Database</span>
         <span class="marquee-item"><span class="marquee-dot"></span>Open to Recruiters</span>
@@ -153,7 +145,7 @@ sort($languages);
         <span class="marquee-item"><span class="marquee-dot"></span>EECS 2026</span>
         <span class="marquee-item"><span class="marquee-dot"></span>Student Talent</span>
         <span class="marquee-item"><span class="marquee-dot"></span>Find Developers</span>
-        <!-- I copy the same items again for the seamless loop -->
+        <!-- copy the same items again for the seamless loop -->
         <span class="marquee-item"><span class="marquee-dot"></span>Aston University</span>
         <span class="marquee-item"><span class="marquee-dot"></span>CV Database</span>
         <span class="marquee-item"><span class="marquee-dot"></span>Open to Recruiters</span>
@@ -180,7 +172,7 @@ sort($languages);
             <?php echo $totalCVs; ?> CV<?php echo $totalCVs !== 1 ? 's' : ''; ?> from Aston University students and programmers.
         </p>
 
-        <!-- Search form - submits via GET so results are shareable -->
+        <!-- search form - submits via GET so results are shareable -->
         <form method="GET" action="index.php" class="search-form">
             <input
                 type="text"
@@ -198,7 +190,7 @@ sort($languages);
             <?php endif; ?>
         </form>
 
-        <!-- Filter and Sort bar - I handle these with JavaScript so no page reload -->
+        <!-- filter and Sort bar - I handle these with JavaScript so no page reload -->
         <div class="filter-bar">
             <select class="filter-select" id="langFilter">
                 <option value="">All Languages</option>
@@ -215,7 +207,7 @@ sort($languages);
                 <option value="views">Sort: Most Viewed</option>
             </select>
 
-            <!-- I update this count live via JS as filters change -->
+            <!-- update this count live via JS as filters change -->
             <span class="filter-count" id="visibleCount">
                 <?php echo count($cvs); ?> CV<?php echo count($cvs) !== 1 ? 's' : ''; ?>
             </span>
@@ -235,7 +227,7 @@ sort($languages);
             <?php endif; ?>
 
             <?php foreach ($cvs as $cv):
-                // I get the first letter of the name for the avatar initials
+                // get the first letter of the name for the avatar initials
                 $initials = strtoupper(mb_substr(trim($cv['name']), 0, 1));
             ?>
                 <div class="cv-card"
@@ -243,15 +235,15 @@ sort($languages);
                      data-lang="<?php echo htmlspecialchars($cv['keyprogramming']); ?>"
                      data-views="<?php echo (int)$cv['view_count']; ?>">
 
-                    <!-- Card header: avatar + name + email -->
+                    <!-- card header: avatar + name + email -->
                     <div class="cv-card-header">
                         <div class="cv-avatar">
                             <?php if (!empty($cv['profile_picture'])): ?>
-                                <!-- I show the uploaded profile photo if they have one -->
+                                <!-- show the uploaded profile photo if they have one -->
                                 <img src="uploads/<?php echo htmlspecialchars($cv['profile_picture']); ?>"
                                      alt="<?php echo htmlspecialchars($cv['name']); ?>">
                             <?php else: ?>
-                                <!-- I show the first letter of their name as initials -->
+                                <!-- show the first letter of their name as initials -->
                                 <?php echo $initials; ?>
                             <?php endif; ?>
                         </div>
@@ -261,7 +253,7 @@ sort($languages);
                         </div>
                     </div>
 
-                    <!-- Card body: language badge + view count -->
+                    <!-- card body: language badge + view count -->
                     <div class="cv-card-body">
                         <div class="skills-container">
                             <span class="skill-badge">
@@ -269,13 +261,13 @@ sort($languages);
                             </span>
                         </div>
                         <p style="color: var(--text-light); font-size: 0.82rem; display: flex; align-items: center; gap: 0.35rem;">
-                            <!-- Eye icon using Unicode -->
+                            <!-- eye icon using Unicode -->
                             &#128065;
                             <?php echo (int)$cv['view_count']; ?> view<?php echo $cv['view_count'] != 1 ? 's' : ''; ?>
                         </p>
                     </div>
 
-                    <!-- Card footer: View CV button -->
+                    <!-- card footer: View CV button -->
                     <div class="cv-card-footer">
                         <a href="cv.php?id=<?php echo $cv['id']; ?>" class="cta-button">
                             View CV
@@ -285,7 +277,7 @@ sort($languages);
             <?php endforeach; ?>
         </div>
 
-        <!-- I show this message when JS filters produce no results -->
+        <!-- show this message when JS filters produce no results -->
         <div class="no-results" id="noFilterResults" style="display: none;">
             <strong>No CVs match this filter</strong>
             Try selecting a different language or sorting option.
@@ -312,7 +304,7 @@ sort($languages);
         <?php endif; ?>
 
         <form action="contact_handler.php" method="POST" class="form-card" style="max-width: 600px; margin: 0; padding: 2rem; box-shadow: none; border: 1px solid var(--border-color);">
-            <!-- I include a CSRF token to protect against cross-site request forgery -->
+            <!-- include a CSRF token to protect against cross-site request forgery -->
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? bin2hex(random_bytes(32))); ?>">
             <!--
                 HONEYPOT FIELD - I hide this from real users with CSS.
@@ -385,7 +377,7 @@ sort($languages);
      ============================================================ -->
 <script>
 // ---- 1. PRELOADER ----
-// I wait for the page to fully load then fade out the preloader
+// wait for the page to fully load then fade out the preloader
 window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
     if (preloader) {
@@ -394,7 +386,7 @@ window.addEventListener('load', function () {
 });
 
 // ---- 2. NAVBAR SCROLL CLASS ----
-// I add .scrolled to the header when the user scrolls down
+// add .scrolled to the header when the user scrolls down
 // so the CSS can make it more opaque with a blur effect
 const header = document.getElementById('main-header');
 window.addEventListener('scroll', function () {
@@ -406,33 +398,33 @@ window.addEventListener('scroll', function () {
 });
 
 // ---- 3. SCROLL REVEAL ----
-// I use IntersectionObserver to detect when each card enters the screen.
-// When it does, I add the .revealed class which triggers the CSS animation.
+// use IntersectionObserver to detect when each card enters the screen.
+// when it does, I add the .revealed class which triggers the CSS animation.
 const revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
         if (entry.isIntersecting) {
             entry.target.classList.add('revealed');
-            // I stop watching the card once it has appeared
+            // stop watching the card once it has appeared
             revealObserver.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.1,      // I trigger when 10% of the card is visible
+    threshold: 0.1,      // trigger when 10% of the card is visible
     rootMargin: '0px 0px -40px 0px'
 });
 
-// I watch every CV card on the page
+// watch every CV card on the page
 document.querySelectorAll('.cv-card').forEach(function (card) {
     revealObserver.observe(card);
 });
 
 // ---- 4. STATS COUNTERS ----
-// I animate each stat number from 0 up to its target value.
-// The data-target attribute on each .stat-number holds the final value.
+// animate each stat number from 0 up to its target value.
+// the data-target attribute on each .stat-number holds the final value.
 function animateCounter(el) {
     const target  = parseInt(el.getAttribute('data-target'), 10);
-    const duration = 1200; // I count up over 1.2 seconds
-    const step    = target / (duration / 16); // I update every ~16ms (60fps)
+    const duration = 1200; // count up over 1.2 seconds
+    const step    = target / (duration / 16); // update every ~16ms (60fps)
     let current   = 0;
 
     const timer = setInterval(function () {
@@ -441,7 +433,7 @@ function animateCounter(el) {
             current = target;
             clearInterval(timer);
         }
-        // I check if this stat should skip number formatting (e.g. the year)
+        // check if this stat should skip number formatting (e.g. the year)
         if (el.getAttribute('data-nofmt') === 'true') {
             el.textContent = Math.floor(current);
         } else {
@@ -450,12 +442,12 @@ function animateCounter(el) {
     }, 16);
 }
 
-// I only start the counter animation when the stats bar is visible
+// only start the counter animation when the stats bar is visible
 const statsObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
         if (entry.isIntersecting) {
             document.querySelectorAll('.stat-number').forEach(animateCounter);
-            statsObserver.disconnect(); // I only run once
+            statsObserver.disconnect(); // only run once
         }
     });
 }, { threshold: 0.3 });
@@ -464,8 +456,8 @@ const statsBar = document.querySelector('.stats-bar');
 if (statsBar) statsObserver.observe(statsBar);
 
 // ---- 5 & 6. LIVE FILTER AND SORT ----
-// I filter and sort the CV cards in real time without a page reload.
-// I read the selected language and sort option, then show/hide/reorder cards.
+// filter and sort the CV cards in real time without a page reload.
+// read the selected language and sort option, then show/hide/reorder cards.
 
 const langFilter   = document.getElementById('langFilter');
 const sortSelect   = document.getElementById('sortSelect');
@@ -477,47 +469,47 @@ function applyFiltersAndSort() {
     const selectedLang = langFilter.value.toLowerCase();
     const sortBy       = sortSelect.value;
 
-    // I get all the cards as an array so I can sort them
+    // get all the cards as an array so I can sort them
     const cards = Array.from(cvGrid.querySelectorAll('.cv-card'));
 
-    // I sort the array first
+    // sort the array first
     cards.sort(function (a, b) {
         if (sortBy === 'name') {
-            // I sort alphabetically A to Z by name
+            // sort alphabetically A to Z by name
             return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
         } else if (sortBy === 'name-desc') {
-            // I sort alphabetically Z to A
+            // sort alphabetically Z to A
             return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name'));
         } else if (sortBy === 'views') {
-            // I sort by view count, highest first
+            // sort by view count, highest first
             return parseInt(b.getAttribute('data-views'), 10) - parseInt(a.getAttribute('data-views'), 10);
         }
         return 0;
     });
 
-    // I re-append the cards in sorted order
+    // re-append the cards in sorted order
     cards.forEach(function (card) {
         cvGrid.appendChild(card);
     });
 
-    // I now show or hide cards based on the language filter
+    // now show or hide cards based on the language filter
     let shown = 0;
     cards.forEach(function (card) {
         const cardLang = card.getAttribute('data-lang').toLowerCase();
         const matches  = selectedLang === '' || cardLang === selectedLang;
 
         if (matches) {
-            card.style.display = '';  // I show the card
+            card.style.display = '';  // show the card
             shown++;
         } else {
-            card.style.display = 'none';  // I hide the card
+            card.style.display = 'none';  // hide the card
         }
     });
 
-    // I update the count label
+    // update the count label
     visibleCount.textContent = shown + ' CV' + (shown !== 1 ? 's' : '');
 
-    // I show the no-results message if everything is hidden
+    // show the no-results message if everything is hidden
     if (shown === 0) {
         noResults.style.display = 'block';
     } else {
@@ -525,7 +517,7 @@ function applyFiltersAndSort() {
     }
 }
 
-// I listen for changes on both dropdowns
+// listen for changes on both dropdowns
 if (langFilter) langFilter.addEventListener('change', applyFiltersAndSort);
 if (sortSelect) sortSelect.addEventListener('change', applyFiltersAndSort);
 </script>
