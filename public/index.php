@@ -1,14 +1,6 @@
 <?php
 /*
- * index.php
- * CV Browse and Search Page - AstonCV
- * author: Isaac Adjei
- *
- * display all CVs as cards in a responsive grid.
- * support searching by name or programming language via GET.
- * fetch the total CV count for the stats bar on the hero.
- * sanitise all output with htmlspecialchars to prevent XSS.
- * wrap the database call in try/catch for proper error handling.
+ * browse and search page: cv cards in a grid, search by name or language.
  */
 
 require 'db.php';

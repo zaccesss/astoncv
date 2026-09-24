@@ -1,15 +1,6 @@
 <?php
 /*
- * update.php
- * update CV Page - AstonCV
- * author: Isaac Adjei
- *
- * allow logged-in users to update their CV details.
- * allow password changes with strength enforcement.
- * allow profile picture uploads with file type and size validation.
- * only allow access to logged-in users - redirect to login otherwise.
- * use a CSRF token to prevent cross-site request forgery.
- * wrap all database calls in try/catch for proper error handling.
+ * cv update page: login required, password changes and validated profile picture uploads.
  */
 
 require 'db.php';

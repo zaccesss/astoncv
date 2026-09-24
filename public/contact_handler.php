@@ -1,22 +1,7 @@
 <?php
 /*
- * contact_handler.php
- * contact Form Handler - AstonCV
- * author: Isaac Adjei
- *
- * handle the enquiry form submission from index.php.
- * validate all inputs before doing anything with them.
- * use a honeypot field to silently block spam bots.
- * send the message to contact@isaacadjei.me using PHP mail().
- * redirect back to index.php with a success or error flag.
- *
- * SECURITY MEASURES USED HERE:
- * 1. Honeypot field - bots fill it in, humans leave it empty.
- *    if it has any value I silently reject the submission.
- * 2. POST-only - GET requests are rejected immediately.
- * 3. Input validation - all fields checked before processing.
- * 4. Email validation - filter_var ensures a real email format.
- * 5. htmlspecialchars - all output sanitised to prevent XSS.
+ * contact form handler: post-only, validates every field and drops honeypot hits silently.
+ * sanitises all output and sends the message with mail().
  */
 
 session_start();
@@ -27,14 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ----------------------------------------------------------------
-// HONEYPOT CHECK
-// include a hidden field called "website" in the contact form.
-// real users never see or fill it in because it is hidden with CSS.
-// bots automatically fill in every field they find, so if this
-// field has any value I know it is a bot and silently redirect.
-// pretend it worked so bots don't know they were caught.
-// ----------------------------------------------------------------
+// honeypot: the hidden "website" field is empty for humans. a value means a bot, so
+// redirect as if it worked.
 if (!empty($_POST['website'])) {
     header('Location: index.php?msg=sent#contact');
     exit;

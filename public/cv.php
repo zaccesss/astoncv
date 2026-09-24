@@ -1,14 +1,6 @@
 <?php
 /*
- * cv.php
- * CV Detail Page - AstonCV
- * author: Isaac Adjei
- *
- * display the full details of a single CV identified by ?id= in the URL.
- * increment the view count each time this page loads.
- * sanitise all output with htmlspecialchars to prevent XSS.
- * wrap all database calls in try/catch for proper error handling.
- * only show the Edit button if the logged-in user owns this CV.
+ * cv detail page for ?id=: counts views and shows Edit only to the owner.
  */
 
 require 'db.php';

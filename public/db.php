@@ -1,16 +1,7 @@
 <?php
 /*
- * db.php
- * database Connection File - AstonCV
- * author: Isaac Adjei
- *
- * this file creates a connection to the MySQL database using PDO.
- * it is included at the top of every page that needs database access.
- * load credentials from config.php so that sensitive details are
- * never hardcoded here and never accidentally pushed to GitHub.
- *
- * using PDO (PHP Data Objects) is more secure than older MySQL methods
- * because it supports prepared statements which prevent SQL injection.
+ * pdo connection used by every page. credentials come from the gitignored config.php.
+ * prepared statements guard against sql injection.
  */
 
 // load my database credentials from config.php

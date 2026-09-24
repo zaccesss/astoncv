@@ -1,15 +1,6 @@
 <?php
 /*
- * register.php
- * registration Page - AstonCV
- * author: Isaac Adjei
- *
- * allow new users to create an account and add their CV.
- * validate all fields server-side before saving to the database.
- * hash passwords using bcrypt - never stored as plain text.
- * use a CSRF token to prevent cross-site request forgery.
- * enforce password strength: uppercase, number, special character.
- * wrap all database calls in try/catch for proper error handling.
+ * registration page: server-side validation, bcrypt hashing, csrf token and password strength rules.
  */
 
 require 'db.php';

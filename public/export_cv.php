@@ -1,13 +1,6 @@
 <?php
 /*
- * export_cv.php
- * CV PDF Export - AstonCV
- * author: Isaac Adjei
- *
- * generate a downloadable PDF of a single CV using mPDF.
- * identify the CV by the id passed in the URL e.g. export_cv.php?id=1
- * anyone can export any CV as a PDF - no login required.
- * wrap database calls in try/catch for proper error handling.
+ * exports one cv as a pdf with mPDF. no login required.
  */
 
 require 'db.php';

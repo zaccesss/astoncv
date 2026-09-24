@@ -1,15 +1,6 @@
 <?php
 /*
- * login.php
- * login Page - AstonCV
- * author: Isaac Adjei
- *
- * allow registered users to log in to their account.
- * use PHP sessions to remember who is logged in across pages.
- * verify passwords against the hashed version stored in the database.
- * use a CSRF token to prevent cross-site request forgery attacks.
- * lock the account for 15 minutes after 5 failed login attempts.
- * wrap database calls in try/catch for proper error handling.
+ * login page: hashed password check, csrf token and a 15 minute lock after 5 failed attempts.
  */
 
 require 'db.php';

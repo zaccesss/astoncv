@@ -1,11 +1,6 @@
 <?php
 /*
- * logout.php
- * logout - AstonCV
- * author: Isaac Adjei
- *
- * destroys the session to log the user out.
- * redirects to the homepage after logging out.
+ * logout: destroys the session and returns to the homepage.
  */
 
 // starts the session so we can destroy it

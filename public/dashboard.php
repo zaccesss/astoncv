@@ -1,13 +1,6 @@
 <?php
 /*
- * dashboard.php
- * personal Dashboard - AstonCV
- * author: Isaac Adjei
- *
- * show the logged-in user their CV preview and quick actions.
- * fetch their full CV data from the database to display here.
- * only allow access to logged-in users - redirect to login otherwise.
- * wrap all database calls in try/catch for proper error handling.
+ * dashboard for logged-in users: cv preview and quick actions, redirects to login otherwise.
  */
 
 require 'db.php';
