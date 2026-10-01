@@ -13,7 +13,6 @@
 - [ ] PHP syntax is valid (run `php -l` on any changed `.php` files)
 - [ ] All output is sanitised with `htmlspecialchars` where user input is echoed
 - [ ] Any new form includes CSRF token validation
-- [ ] UK English used throughout - no Oxford commas, no em dashes
 - [ ] `.gitignore` has not been modified
 
 ## Related issue
