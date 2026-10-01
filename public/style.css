@@ -39,7 +39,7 @@
   --primary-light: #7b4fa6; /* lighter shade for accents */
   --primary-faint: #f3eefa; /* very light purple for backgrounds */
 
-  /* --- Accent - I replace the old yellow with clean lavender --- */
+  /* --- Accent - clean lavender replaces the old yellow --- */
   --accent-color: #e8e0f0; /* soft lavender - replaces #ffb81c yellow */
   --accent-hover: #d4c8e8; /* slightly darker lavender for hover */
   --accent-bright: #a78bca; /* medium purple for badges and tags */
@@ -468,8 +468,8 @@ nav a.active::after {
   flex-shrink: 0;
 }
 
-/* move the track left by exactly 50% - because I duplicate
-   the content, this creates a seamless infinite loop */
+/* move the track left by exactly 50% - because the content is
+   duplicated, this creates a seamless infinite loop */
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0);

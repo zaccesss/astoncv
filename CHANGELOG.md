@@ -69,6 +69,10 @@ PATCH - bug fixes, typo corrections, small updates
 
 ## [Unreleased]
 
+### Changed
+
+- Tidied code comments and the pull request template.
+
 Planned or in progress - not yet in a release.
 
 - Unit and integration test suite
