@@ -73,6 +73,10 @@ PATCH - bug fixes, typo corrections, small updates
 
 - Tidied code comments and the pull request template.
 
+### Fixed
+
+- The contact form sends from no-reply@isaacadjei.me, the address that exists, instead of noreply@isaacadjei.me.
+
 Planned or in progress - not yet in a release.
 
 - Unit and integration test suite

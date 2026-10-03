@@ -40,7 +40,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $to      = 'contact@isaacadjei.me';
 $subject = 'AstonCV Enquiry from ' . $name;
 $body    = "Name: $name\nEmail: $email\n\nMessage:\n$message";
-$headers = "From: noreply@isaacadjei.me\r\nReply-To: $email\r\n";
+$headers = "From: no-reply@isaacadjei.me\r\nReply-To: $email\r\n";
 
 // attempt to send - only works on the live server, not localhost
 mail($to, $subject, $body, $headers);
