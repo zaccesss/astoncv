@@ -2,8 +2,11 @@
 
 [![PHP Lint](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml/badge.svg)](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.2.4-blue.svg)](CHANGELOG.md)
-[![Status](https://img.shields.io/badge/status-live-brightgreen.svg)](#live-site)
+[![Version](https://img.shields.io/badge/version-2.2.5-blue.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/status-archived-lightgrey.svg)](#live-site)
+
+> [!IMPORTANT]
+> This repository is archived. AstonCV was built as university coursework and is kept here as it was submitted, with later fixes. The idea continues as [Vitafolio](https://github.com/zaccesss/vitafolio), a new project rebuilt from scratch in Laravel.
 
 AstonCV is a full-stack CV database website, built as a university portfolio project in plain PHP and MySQL. Anyone can browse and search student CVs publicly, register an account, manage their own CV once logged in and download any CV as a professionally formatted PDF.
 
@@ -23,7 +26,7 @@ AstonCV is a full-stack CV database website, built as a university portfolio pro
 
 ## Live Site
 
-The site is live at [astoncv.zacess.com](http://astoncv.zacess.com).
+There is no live version any more. The site ran on a university server that has since been shut down. The project continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
 
 ---
 
