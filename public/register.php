@@ -410,8 +410,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="footer-col">
             <h4>Project Info</h4>
             <ul>
-                <li><a href="https://github.com/zaccessss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
-                <li><a href="http://astoncv.zacess.com" target="_blank" rel="noopener">Live Site</a></li>
+                <li><a href="https://github.com/zaccesss/astoncv" target="_blank" rel="noopener">GitHub Repository</a></li>
+                <li><a href="https://github.com/zaccesss/astoncv" target="_blank" rel="noopener">Source code</a></li>
                 <li><a href="https://www.aston.ac.uk" target="_blank" rel="noopener">Aston University</a></li>
             </ul>
         </div>

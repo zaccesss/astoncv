@@ -26,6 +26,17 @@ PATCH - bug fixes, typo corrections, small updates
 
 ---
 
+## [2.2.5] - 2026-10-04
+
+### Fixed
+
+- PDF export failed on every request because of a broken line in the export template.
+- Footer links: the GitHub link on three pages and the live site link, which pointed at a server that no longer exists.
+
+### Changed
+
+- The repository is archived as the coursework edition. Development continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
+
 ## [2.2.4] - 2026-09-17
 
 ### Added
