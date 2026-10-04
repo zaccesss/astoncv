@@ -2,7 +2,7 @@
 
 This roadmap tracks the development plan for AstonCV.
 
-**Current version: v2.2.3 - Repo hygiene bundle**
+**Final version: v2.2.5 - Coursework edition (archived).** Development continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
 
 ---
 
