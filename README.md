@@ -1,8 +1,8 @@
 # AstonCV
 
-[![PHP Lint](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml/badge.svg)](https://github.com/zaccesss/astoncv/actions/workflows/php-lint.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.2.5-blue.svg)](CHANGELOG.md)
+[![Release](https://img.shields.io/github/v/release/zaccesss/astoncv?label=release)](https://github.com/zaccesss/astoncv/releases/latest)
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-2.3.0-blue.svg)](CHANGELOG.md)
 [![Status](https://img.shields.io/badge/status-archived-lightgrey.svg)](#live-site)
 
 > [!IMPORTANT]
@@ -14,6 +14,7 @@ AstonCV is a full-stack CV database website, built as a university portfolio pro
 
 <p align="center">
   <a href="#live-site">Live Site</a> •
+  <a href="#how-it-works">How It Works</a> •
   <a href="#documentation-hub">Documentation</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#repository-structure">Structure</a> •
@@ -27,6 +28,36 @@ AstonCV is a full-stack CV database website, built as a university portfolio pro
 ## Live Site
 
 There is no live version any more. The site ran on a university server that has since been shut down. The project continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
+
+---
+
+<a id="how-it-works"></a>
+
+## How It Works
+
+```mermaid
+flowchart LR
+    subgraph CLIENT["Browser"]
+        VISITOR["Visitor<br/>browse, search, download"]
+        USER["Registered user<br/>register, log in, edit a CV"]
+    end
+    subgraph APP["Apache and PHP 8.2 (public/)"]
+        PAGES["index, cv, register, login,<br/>dashboard, update"]
+        EXPORT["export_cv.php<br/>mPDF via Composer"]
+        CONTACT["contact_handler.php<br/>PHP mail()"]
+        DB["db.php<br/>one PDO connection, credentials in config.php"]
+    end
+    VISITOR --> PAGES
+    USER -- "session, CSRF token, lockout" --> PAGES
+    PAGES --> DB
+    EXPORT --> DB
+    DB -- "prepared statements" --> MYSQL[("MySQL<br/>users, CVs, view counts")]
+    PAGES -- "profile pictures" --> UPLOADS["public/uploads/<br/>gitignored"]
+    VISITOR -- "download" --> EXPORT -- "PDF" --> VISITOR
+    VISITOR -- "contact form with honeypot" --> CONTACT -- "enquiry" --> MAIL["Mail to the contact address"]
+```
+
+Every page is a plain PHP file under `public/`, served directly by Apache. They share one PDO connection from `db.php` and every query is a prepared statement. PDF export builds the CV as HTML and hands it to mPDF, so no login is needed to download.
 
 ---
 
