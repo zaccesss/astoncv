@@ -26,15 +26,29 @@ PATCH - bug fixes, typo corrections, small updates
 
 ---
 
+## [Unreleased]
+
+## [2.3.0] - 2026-11-03
+
+### Added
+
+- An architecture diagram in the README: browser, the PHP pages, the PDO connection, MySQL, mPDF export and the contact handler
+
+### Changed
+
+- Routine tidy-up
+
 ## [2.2.5] - 2026-10-04
 
 ### Fixed
 
 - PDF export failed on every request because of a broken line in the export template.
 - Footer links: the GitHub link on three pages and the live site link, which pointed at a server that no longer exists.
+- The contact form sends from no-reply@isaacadjei.me, the address that exists, instead of noreply@isaacadjei.me.
 
 ### Changed
 
+- Tidied code comments and the pull request template.
 - The repository is archived as the coursework edition. Development continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
 
 ## [2.2.4] - 2026-09-17
@@ -75,23 +89,6 @@ PATCH - bug fixes, typo corrections, small updates
 - Scoped the php-lint workflow token to read-only contents access, closing a CodeQL
   actions/missing-workflow-permissions alert. The job only checks out the repo and runs a
   syntax check, it never writes back.
-
----
-
-## [Unreleased]
-
-### Changed
-
-- Tidied code comments and the pull request template.
-
-### Fixed
-
-- The contact form sends from no-reply@isaacadjei.me, the address that exists, instead of noreply@isaacadjei.me.
-
-Planned or in progress - not yet in a release.
-
-- Unit and integration test suite
-- Pagination on the CV browse page
 
 ---
 
@@ -193,8 +190,7 @@ Planned or in progress - not yet in a release.
 
 ---
 
-[Unreleased]: https://github.com/zaccesss/astoncv/compare/v2.1.0...HEAD
-[2.1.0]: https://github.com/zaccesss/astoncv/releases/tag/v2.1.0
-[2.0.0]: https://github.com/zaccesss/astoncv/releases/tag/v2.0.0
-[1.1.0]: https://github.com/zaccesss/astoncv/releases/tag/v1.1.0
-[1.0.0]: https://github.com/zaccesss/astoncv/releases/tag/v1.0.0
+[Unreleased]: https://github.com/zaccesss/astoncv/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/zaccesss/astoncv/releases/tag/v2.3.0
+[2.2.5]: https://github.com/zaccesss/astoncv/releases/tag/v2.2.5
+[2.2.2]: https://github.com/zaccesss/astoncv/releases/tag/v2.2.2

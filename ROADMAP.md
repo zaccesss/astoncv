@@ -2,7 +2,7 @@
 
 This roadmap tracks the development plan for AstonCV.
 
-**Final version: v2.2.5 - Coursework edition (archived).** Development continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
+**Final version: v2.3.0 - Coursework edition (archived).** Development continues as [Vitafolio](https://github.com/zaccesss/vitafolio).
 
 ---
 
