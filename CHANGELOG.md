@@ -28,6 +28,12 @@ PATCH - bug fixes, typo corrections, small updates
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-11-11
+
+### Fixed
+
+- The README stack icons load from the icon project's own repository at a fixed commit. The old host refuses every request, so they showed as broken images
+
 ## [2.3.0] - 2026-11-03
 
 ### Added
